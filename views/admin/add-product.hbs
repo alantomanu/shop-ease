@@ -1,0 +1,40 @@
+<!-- add-product.hbs -->
+<body class=" bg-dark">
+<section>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card bg-dark text-white border-dark">
+                    <div class="card-body">
+                        <h2 class="text-center mb-4">Add Product</h2>
+                        <form action="/admin/add-product" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="name" class="text-white">Name</label>
+                                <input type="text" class="form-control bg-secondary text-white border-dark" id="name" name="name" required>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="category" class="text-white">Category</label>
+                                <input type="text" class="form-control bg-secondary text-white border-dark" id="category" name="category" required>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="price" class="text-white">Price</label>
+                                <input type="text" class="form-control bg-secondary text-white border-dark" id="price" name="price" required>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="description" class="text-white">Description</label>
+                                <textarea class="form-control bg-secondary text-white border-dark" id="description" name="description" rows="4" required></textarea>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="image" class="text-white">Image</label>
+                                <input type="file" class="form-control-file bg-secondary text-white border-dark" id="image" name="image" required>
+                            </div>
+                            <button type="submit" class="btn btn-success btn-block mt-4">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>

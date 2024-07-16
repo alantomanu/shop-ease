@@ -1,0 +1,326 @@
+<section style="margin-top: 130px;">
+    <div class="container mt-5">
+        <h3 class="text-center">Search Results for "{{query}}"</h3>
+
+        {{#if noResults}}
+        <div class="no-results text-center p-5">
+            <div class="alert ">
+                <h3>Sorry, no products available!</h3>
+                <p class="sorrytext">We couldn't find any products matching your search criteria. Please try refining your search<br> or
+                    explore by,</p>
+            </div>
+            <div class="no-results-buttons d-flex justify-content-center flex-wrap">
+                <div class="custom-dropdown">
+                    <button class="btn dropdown-toggle" type="button" id="searchByCategoryDropdown"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Search by Category
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="searchByCategoryDropdown">
+                        {{#each categories}}
+                        <li><a class="dropdown-item" href="/products?category={{this}}">{{this}}</a></li>
+                        {{/each}}
+                    </ul>
+                </div>
+
+                <a href="/#featured-products" class="btn btn-outline-primary m-2">Featured Products</a>
+                <a href="/#recent-products" class="btn btn-outline-primary m-2">Recent Products</a>
+                <a href="/products" class="btn btn-outline-primary m-2">View All Products</a>
+            </div>
+        </div>
+        {{else}}
+        <div class="row">
+            {{#each products}}
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 p-3 d-flex align-items-stretch">
+                <div class="card">
+                    <div class="card-img-top-wrapper">
+                        <img class="card-img-top" src="/product-images/{{this._id}}.jpg" alt="{{this.name}}">
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title text-center mb-2">{{this.name}}</h5>
+                        <p class="card-text mb-3">{{this.description}}</p>
+                        <div class="price-container mb-3 text-center">
+                            <p class="price text-primary">
+                                <span class="currency-symbol">₹{{this.price}}</span>
+                            </p>
+                        </div>
+                        <div class="text-center ml-4">
+                            <button class="cartBtn" onclick="addToCart('{{this._id}}')">
+                                <svg class="cart" fill="white" viewBox="0 0 576 512" height="1em"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
+                                    </path>
+                                </svg>
+                                Add To Cart
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512"
+                                    class="product">
+                                    <path
+                                        d="M211.8 0c7.8 0 14.3 5.7 16.7 13.2C240.8 51.9 277.1 80 320 80s79.2-28.1 91.5-66.8C413.9 5.7 420.4 0 428.2 0h12.6c22.5 0 44.2 7.9 61.5 22.3L628.5 127.4c6.6 5.5 10.7 13.5 11.4 22.1s-2.1 17.1-7.8 23.6l-56 64c-11.4 13.1-31.2 14.6-44.6 3.5L480 197.7V448c0 35.3-28.7 64-64 64H224c-35.3 0-64-28.7-64-64V197.7l-51.5 42.9c-13.3 11.1-33.1 9.6-44.6-3.5l-56-64c-5.7-6.5-8.5-15-7.8-23.6s4.8-16.6 11.4-22.1L137.7 22.3C155 7.9 176.7 0 199.2 0h12.6z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        {{/if}}
+    </div>
+</section>
+
+<style>
+    .cartBtn {
+        width: 150px;
+        height: 40px;
+        border: none;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        color: white;
+        font-weight: 500;
+        position: relative;
+        background-color: #6f42c1;
+        box-shadow: 0 20px 30px -7px rgba(27, 27, 27, 0.219);
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+    .cart {
+        z-index: 2;
+    }
+
+    .cartBtn:focus {
+        outline: none;
+        /* Removes the default focus outline */
+        box-shadow: 0 0 0 2px #6f42c1;
+
+    }
+
+
+    .product {
+        position: absolute;
+        width: 12px;
+        border-radius: 3px;
+        content: "";
+        left: 23px;
+        bottom: 23px;
+        opacity: 0;
+        z-index: 1;
+        fill: rgb(211, 211, 211);
+    }
+
+    .cartBtn:hover .product {
+        animation: slide-in-top 1.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+
+    @keyframes slide-in-top {
+        0% {
+            transform: translateY(-30px);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translateY(0) rotate(-90deg);
+            opacity: 1;
+        }
+    }
+
+    .cartBtn:hover .cart {
+        animation: slide-in-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+
+    @keyframes slide-in-left {
+        0% {
+            transform: translateX(-10px);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .cartBtn {
+            margin-left: 50px;
+        }
+    }
+
+    /* Styling for no results section */
+    .no-results-buttons {
+    /* Center align the buttons horizontally */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Vertically center the items */
+    flex-wrap: wrap;
+    /* Allow wrapping of items */
+    gap: 0.5rem; /* Add some space between buttons */
+}
+    .no-results {
+        border: 1px solid #955dff;
+        border-radius: 10px;
+        background-color: #343a40;
+    }
+
+    .no-results-buttons .btn {
+        border-color: #6f42c1;
+        color: #9156ff;
+    }
+
+    .no-results-buttons .btn:hover {
+        background-color: #6f42c1;
+        color: #ffffff;
+    }
+
+    .alert {
+        background-color: none;
+    }
+    /* Dropdown Container */
+.custom-dropdown {
+    position: relative;
+    /* Ensure the dropdown is positioned correctly */
+    display: inline-block;
+}
+
+/* Dropdown Toggle Button */
+.custom-dropdown .dropdown-toggle {
+    background-color: #343a40;
+    /* Purple background color */
+    color: #fff;
+    /* White text color */
+    border: 1px solid #6f42c1;
+    /* Purple border color */
+    border-radius: 5px;
+    /* Rounded corners */
+    padding: 0.5rem 1rem;
+    /* Padding for the button */
+    font-size: 1rem;
+    /* Font size for the button */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    /* Smooth transition for background color and border */
+}
+
+/* Dropdown Container */
+.custom-dropdown {
+    position: relative;
+    /* Ensure the dropdown is positioned correctly */
+    display: inline-block;
+}
+
+/* Dropdown Toggle Button */
+.custom-dropdown .dropdown-toggle {
+    background-color:  #343a40;;
+    /* Purple background color */
+    color:#9156ff;
+    /* White text color */
+    border: 1px solid #6f42c1;
+    /* Purple border color */
+    border-radius: 5px;
+    /* Rounded corners */
+    padding: 0.5rem 1rem;
+    /* Padding for the button */
+    font-size: 1rem;
+    /* Font size for the button */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    /* Smooth transition for background color and border */
+}
+
+/* Dropdown Toggle Button Hover */
+.custom-dropdown .dropdown-toggle:hover {
+    background-color: #7046bed4;
+    /* Slightly darker purple on hover */
+    border-color: #5a2a9e;
+    /* Darker border color on hover */
+}
+
+/* Dropdown Menu */
+.custom-dropdown .dropdown-menu {
+    padding: 0;
+    border-radius: 5px;
+    /* Rounded corners for the dropdown */
+     background-color: #343a40;
+    /* Purple background color */
+    color:#957fbd;
+    /* Purple border color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    /* Shadow for better visibility */
+    min-width: 150px;
+    /* Set a minimum width for the dropdown */
+    position: absolute;
+    /* Position dropdown menu correctly */
+    top: 100%;
+    /* Align dropdown menu below the dropdown toggle */
+    left: 0;
+    /* Align dropdown menu with the dropdown toggle */
+    z-index: 1000;
+    /* Ensure dropdown menu is on top of other content */
+    opacity: 0;
+    /* Start as invisible */
+    visibility: hidden;
+    /* Hide the menu */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    /* Smooth transition for visibility and opacity */
+}
+
+/* Show Dropdown Menu */
+.custom-dropdown .dropdown-menu.show {
+    opacity: 1;
+    /* Make it visible */
+    visibility: visible;
+    /* Make it visible */
+}
+.custom-dropdown .dropdown-toggle:focus {
+    outline: none;
+    box-shadow: none;
+}
+/* Dropdown Menu Items */
+.custom-dropdown .dropdown-menu .dropdown-item {
+    padding: 8px 16px;
+    /* Padding for the menu items */
+    border-bottom: 1px solid #5a2a9e;
+    /* Purple border color */
+    font-size: 14px;
+    /* Font size for menu items */
+    color: #9c6bf7;
+    /* White text color */
+    border-radius: 5px;
+    /* Rounded corners */
+}
+
+/* Dropdown Item Hover and Focus */
+.custom-dropdown .dropdown-menu .dropdown-item:hover,
+.custom-dropdown .dropdown-menu .dropdown-item:focus {
+      background-color: #5a2a9e;
+    /* Slightly darker purple on hover */
+    border-color: #5a2a9e;
+    /* Darker border color on hover */
+    color:white;
+}
+
+/* Dropdown Item Icons */
+.custom-dropdown .dropdown-menu .dropdown-item i {
+    width: 30px;
+    /* Width of the icon */
+    text-align: center;
+    /* Center the icon */
+    color: #5a2a9e;
+    /* Purple icon color */
+    font-size: 14px;
+    /* Font size for the icon */
+    margin-right: 10px;
+    /* Space between icon and text */
+}
+.sorrytext{
+    color: rgba(255, 255, 255, 0.634);
+}
+
+</style>

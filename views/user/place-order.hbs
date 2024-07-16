@@ -1,0 +1,344 @@
+<section style="margin-top: 150px;">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-xl-8">
+
+                <div class="card">
+                    <div class="card-body">
+                        <ol class="activity-checkout mb-0 px-4 mt-3">
+                            <li class="checkout-item">
+                                <div class="avatar checkout-icon p-1">
+                                    <div class="avatar-title rounded-circle bg-primary">
+                                        <i class="bx bxs-receipt text-white font-size-20"></i>
+                                    </div>
+                                </div>
+                                <div class="feed-item-list">
+                                    <div>
+                                        <h5 class="font-size-16 mb-1">Billing Info</h5>
+                                        <p class="text-white text-truncate mb-4" style="opacity: 0.7;">Add your address & other details </p>
+                                        <div class="mb-3">
+                                            <form action="" id="checkout-form" method="Post">
+                                                <div>
+                                                    <div class="row">
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label"
+                                                                    for="billing-name">Name</label>
+                                                                <input type="text" class="form-control"
+                                                                    id="billing-name" placeholder="Enter name"
+                                                                    name="name" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label"
+                                                                    for="billing-email-address">Email
+                                                                    Address</label>
+                                                                <input type="email" class="form-control"
+                                                                    id="billing-email-address" placeholder="Enter email"
+                                                                    name="email" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label"
+                                                                    for="billing-phone">Phone</label>
+                                                                <input type="text" class="form-control"
+                                                                    id="billing-phone" placeholder="Enter Phone no."
+                                                                    name="phone" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="billing-address">Address</label>
+                                                        <textarea class="form-control" id="billing-address" rows="3"
+                                                            placeholder="Enter full address" name="address" required></textarea>
+                                                    </div>
+                                                    <input type="text" name="userId" id="" value="{{user._id}}" hidden>
+                                                    <div class="row">
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-4 mb-lg-0">
+                                                                <label class="form-label">Country</label>
+                                                                <select class="form-control form-select" title="Country"
+                                                                    name="country" required>
+                                                                    <option value="India">India</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-4 mb-lg-0">
+                                                                <label class="form-label"
+                                                                    for="billing-city">City</label>
+                                                                <input type="text" class="form-control"
+                                                                    id="billing-city" placeholder="Enter City"
+                                                                    name="city" required>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-0">
+                                                                <label class="form-label" for="zip-code">Postal
+                                                                    code</label>
+                                                                <input type="text" class="form-control" id="zip-code"
+                                                                    placeholder="Enter Postal code" name="pincode" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mt-4">
+                                                        <h6 class="mb-4">Payment Method</h6>
+                                                        <div class="row">
+                                                            <div class="col-lg-4 ">
+                                                                <div class="mb-4 mb-lg-0">
+                                                                    <div data-bs-toggle="collapse">
+                                                                        <label class="card-radio-label"
+                                                                            name="delivery-option">
+                                                                            <input type="radio" name="paymentMethod"
+                                                                                id="pay-methodoption1"
+                                                                                class="card-radio-input"
+                                                                                value="Online Payment" required>
+                                                                            <span
+                                                                                class="card-radio py-4 text-center text-truncate">
+                                                                                <i
+                                                                                    class="bx bx-credit-card d-block h2 mb-3"></i>
+                                                                                Online Payment
+                                                                            </span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-3 col-sm-6 mb-lg-4 mb-3">
+                                                                <div>
+                                                                    <label class="card-radio-label"
+                                                                        name="delivery-option">
+                                                                        <input type="radio" name="paymentMethod"
+                                                                            id="pay-methodoption3"
+                                                                            class="card-radio-input"
+                                                                            value="Cash on Delivery"required>
+                                                                        <span
+                                                                            class="card-radio py-4 text-center text-truncate">
+                                                                            <i class="bx bx-money d-block h2 mb-3"></i>
+                                                                            Cash on Delivery
+                                                                        </span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+
+
+
+
+
+                                                </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="checkout-item">
+                                <div class="avatar checkout-icon p-1">
+                                    <div class="avatar-title rounded-circle bg-primary">
+                                        <i class="bx bxs-truck text-white font-size-20"></i>
+                                    </div>
+                                </div>
+                                <div class="feed-item-list">
+                                    <div>
+                                        <h5 class="font-size-16 mb-1">Fast Delivery</h5>
+                                        <p class="text-white opacity-10 text-truncate mb-4"style="opacity: 0.7;">Order now!  Delvery in <strong>2 days</strong></p>
+                                        <div class="mb-3">
+
+                                        </div>
+                                    </div>
+                            </li>
+
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="row my-4">
+                    <div class="col mt-1">
+                        <a href="/" class="btn btn-links">
+                            <i class="mdi mdi-arrow-left me-1"></i> <strong> Continue Shopping</strong> </a>
+                    </div> <!-- end col -->
+                    <div class="col">
+                        <div class="text-end mt-2 mt-sm-0">
+
+                            <button class="btn btn-success" type="submit">
+                                <i class="mdi mdi-cart-outline me-1"></i> Procced </a></button>
+                        </div>
+                    </div> <!-- end col -->
+                </div> <!-- end row-->
+            </div>
+            </form>
+            <div class="col-xl-4">
+                <div class="card checkout-order-summary">
+                    <div class="card-body">
+                        <div class="p-3 bg-dark mb-3" style="border-radius: 10px;">
+                            <h5 class="font-size-16 mb-0 text-white">Order Summary For <span
+                                    class="float-end ms-2">{{user.name}}</span></h5>
+                        </div>
+                        <div class="table-responsive" style="width:auto">
+                            <table class="table table-centered mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="border-top-0" style="width: 82px;" scope="col">Product</th>
+                                        <th class="border-top-0" style="width: 88px;" scope="col"></th>
+                                        <th class="border-top-0" style="width: 95px;" scope="col">Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>{{#each products}}
+                                        <th scope="row"><img src="/product-images/{{this.product._id}}.jpg"
+                                                alt="product-img" title="product-img" class="avatar-md rounded"></th>
+                                        <td>
+                                            <h5 class="font-size-14 m-0">Category: {{this.product.category}}</h5>
+                                            <h5 class="font-size-16 text-truncate pt-2"><a href="#"
+                                                    class="text-light">{{this.product.name}}
+                                                </a></h5>
+
+                                            <p class="text-muted mb-0 mt-1">{{this.product.price}}x{{this.quantity}}</p>
+                                        </td>
+                                        <td>{{formatPrice (multiply this.product.price this.quantity)}}</td>
+                                    </tr>
+                                    {{/each}}
+                                    <tr>
+                                        <td colspan="2">
+                                            <h5 class="font-size-14 m-0">Sub Total : </h5>
+                                        </td>
+                                        <td>
+                                            <span class="currency-symbols">₹</span> <strong>{{total}}</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <h5 class="font-size-14 m-0">Coupons :</h5>
+                                        </td>
+                                        <td>
+                                            <p class=" font-size-14 m-0">Not Available</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <h5 class="font-size-14 m-0">Delivery Charge :</h5>
+                                        </td>
+                                        <td>
+                                            <strike>₹40</strike> FREE Delivery
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td colspan="2">
+                                            <h5 class="text-white">Total Price: </h5>
+                                        </td>
+                                        <td class="text-white">
+                                            <span class="currency-symbols">₹</span> <strong>{{total}}</strong>
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- end row -->
+
+    </div>
+
+</section>
+
+<script>
+    // Handle form submission
+    $("#checkout-form").submit((e) => {
+        e.preventDefault();
+        $.ajax({
+            url: '/place-order',
+            method: 'post',
+            data: $('#checkout-form').serialize(), // Serialize form data
+            success: (response) => {
+                console.log("Order placed response:", response);
+                if (response.codSuccess) {
+                    location.href = '/order-successfull';
+                } else {
+                    razorpayPayment(response);
+                }
+            },
+            error: (xhr, status, error) => {
+                console.error("An error occurred while placing the order:", status, error);
+                alert("An error occurred while placing the order. Please try again.");
+            }
+        });
+    });
+
+    // Function to initiate Razorpay payment
+    function razorpayPayment(order) {
+        var options = {
+            "key": "rzp_test_qyirRzk9B6hlNz", // Enter the Key ID generated from the Dashboard
+            "amount": order.amount, // Amount in paise
+            "currency": "INR",
+            "name": "Shopping Cart", // Your business name
+            "description": "Test Transaction",
+            "image": "https://example.com/your_logo",
+            "order_id": order.id, // Order ID from the server response
+            "handler": function (response) {
+                // Verify the payment with the server
+                console.log("Payment handler response:", response);
+                verifyPayment(response, order);
+            },
+            "prefill": {
+                "name": "Gaurav Kumar", // Customer's name
+                "email": "gaurav.kumar@example.com",
+                "contact": "9000090000"  // Customer's phone number
+            },
+            "notes": {
+                "address": "Razorpay Corporate Office"
+            },
+            "theme": {
+                "color": "#6F42C1"
+            }
+        };
+
+        var rzp1 = new Razorpay(options);
+        rzp1.on('payment.failed', function (response) {
+            console.error("Payment failed:", response.error);
+            alert(`Payment failed: ${response.error.description}`);
+        });
+
+        // Open the Razorpay checkout modal
+        rzp1.open();
+    }
+
+    // Function to verify the payment
+    function verifyPayment(payment, order) {
+        $.ajax({
+            url: '/verify-payment',
+            data: {
+                payment: payment,
+                order: order
+            },
+            method: 'post',
+            success: (response) => {
+                console.log("Payment verification response:", response);
+                if (response.status) {
+                    location.href = '/order-successfull';
+                } else {
+                    alert("Payment verification failed.");
+                }
+            },
+            error: (xhr, status, error) => {
+                console.error("An error occurred during payment verification:", status, error);
+                alert("An error occurred during payment verification. Please try again.");
+            }
+        });
+    }
+</script>
+

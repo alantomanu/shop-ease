@@ -1,0 +1,147 @@
+  <!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+   <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.css">
+   </head>
+   <body  style="background-color: #343a40;" >
+   <section class=" text-light py-4 " style="border-radius:5px;">
+  <div class="container">
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="table-responsive">
+          <table class="table table-dark table-striped" id="allOrdersTable">
+            <thead>
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Date</th>
+                <th scope="col">Total Amount</th>
+                <th scope="col">Payment Method</th>
+                <th scope="col">Delivery Details</th>
+                <th scope="col">Products</th>
+                <th scope="col">Status</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each orders}}
+                <tr>
+                  <th scope="row">{{increment @index}}</th>
+                  <td>{{formatDate date}}</td>
+                  <td>₹{{totalAmount}}</td>
+                  <td>{{paymentMethod}}</td>
+                  <td>
+                    <p>Name: {{deliveryDetails.name}}</p>
+                    <p>Address: {{deliveryDetails.address}}</p>
+                    <p>Phone: {{deliveryDetails.mobile}}</p>
+                    <p>City: {{deliveryDetails.city}}</p>
+                    <p>Country: {{deliveryDetails.country}}</p>
+                    <p>Pincode: {{deliveryDetails.pincode}}</p>
+                  </td>
+                  <td>
+                    {{#each products}}
+                      <p>{{productName}} (x{{quantity}})</p>
+                    {{/each}}
+                  </td>
+                  <td>{{paymentStatus}}</td>
+                  <td>
+                    {{#ifEqual paymentStatus 'placed'}}
+                      <button class="btn btn-warning update-status m-3" data-id="{{_id}}" data-status="packed"> <i class="fas fa-clipboard-list"></i> Order Packed</button>
+                      <button class="btn btn-info update-status m-3" data-id="{{_id}}" data-status="shipped"><i class="fas fa-paper-plane"></i> Shipped</button>
+                      <button class="btn btn-primary update-status m-3" data-id="{{_id}}" data-status="out for delivery"><i class="fas fa-shipping-fast"></i> Out For Delivery</button>
+                      <button class="btn btn-success update-status m-3" data-id="{{_id}}" data-status="delivered"> <i class="fas fa-home"></i> Order Delivered</button>
+                    {{/ifEqual}}
+                    {{#ifEqual paymentStatus 'packed'}}
+                      <button class="btn btn-info update-status m-3" data-id="{{_id}}" data-status="shipped"><i class="fas  fa-paper-plane"></i> Shipped</button>
+                      <button class="btn btn-primary update-status m-3" data-id="{{_id}}" data-status="on the way"><i class="fas fa-shipping-fast"></i> On The Way</button>
+                      <button class="btn btn-success update-status m-3" data-id="{{_id}}" data-status="delivered"> <i class="fas fa-home"></i> Order Delivered</button>
+                    {{/ifEqual}}
+                    {{#ifEqual paymentStatus 'shipped'}}
+                      <button class="btn btn-primary update-status m-3" data-id="{{_id}}" data-status="on the way"><i class="fas fa-shipping-fast"></i> On The Way</button>
+                      <button class="btn btn-success update-status m-3" data-id="{{_id}}" data-status="delivered"> <i class="fas fa-home"></i> Order Delivered</button>
+                    {{/ifEqual}}
+                    {{#ifEqual paymentStatus 'on the way'}}
+                      <button class="btn btn-success update-status m-3" data-id="{{_id}}" data-status="delivered"> <i class="fas fa-home"></i> Order Delivered</button>
+                    {{/ifEqual}}
+                  </td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+
+
+
+
+<script>
+ 
+    new DataTable('#allOrdersTable');
+
+  document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.update-status').forEach(button => {
+    button.addEventListener('click', (e) => {
+      const orderId = e.target.dataset.id;
+      const status = e.target.dataset.status;
+      console.log('Order ID:', orderId, 'Status:', status);
+
+      fetch(`/admin/update-order-status`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ orderId, status })
+      }).then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      }).then(data => {
+        console.log('Fetch response:', data);
+        if (data.success) {
+          location.reload(); // Reload page to reflect status update
+        } else {
+          alert('Failed to update status: ' + (data.error || 'Unknown error'));
+        }
+      }).catch((error) => {
+        console.error('Fetch error:', error);
+        alert('Failed to update status: ' + error.message);
+      });
+    });
+  });
+});
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.update-status').forEach(button => {
+    button.addEventListener('click', function () {
+      const id = this.getAttribute('data-id');
+      const status = this.getAttribute('data-status');
+
+      fetch('/admin/update-order-status', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id, status })
+      })
+      .then(response => response.json())
+      .then(result => {
+        if (result.success) {
+          window.location.reload(); // Reload to see the updated status
+        } else {
+          alert('Failed to update status');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    });
+  });
+});
+
+
+</script>
+</html>

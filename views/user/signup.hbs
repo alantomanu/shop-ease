@@ -1,0 +1,197 @@
+<section style="margin-top: 125px;">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="text-center mb-4">Sign Up</h3>
+                        <form id="signupForm" action="/signup" method="post">
+                            <div class="text-center mb-3">
+                                <button type="button" class="btn btn-link btn-floating mx-1">
+                                    <i class="fab fa-facebook-f"></i>
+                                </button>
+                                <button type="button" class="btn btn-link btn-floating mx-1">
+                                    <i class="fab fa-google"></i>
+                                </button>
+                                <button type="button" class="btn btn-link btn-floating mx-1">
+                                    <i class="fab fa-twitter"></i>
+                                </button>
+                                <button type="button" class="btn btn-link btn-floating mx-1">
+                                    <i class="fab fa-github"></i>
+                                </button>
+                            </div>
+
+                            <h5 class="text-center mb-3 position-relative">
+                                <span class="or-line-left"></span>
+                                <span class="bg px-3 text-muted">or</span>
+                                <span class="or-line-right"></span>
+                            </h5>
+
+                            <!-- Error message -->
+                            <div id="errorMessage" class="alert alert-danger" style="display: none;"></div>
+
+                            <!-- Name input -->
+                            <div class="form-outline mb-4">
+                                <input type="text" id="registerName" name="name" class="form-control" required />
+                                <label class="form-label" for="registerName">Name</label>
+                            </div>
+
+                            <!-- Email input -->
+                            <div class="form-outline mb-4">
+                                <input type="email" id="registerEmail" name="email" class="form-control" required />
+                                <label class="form-label" for="registerEmail">Email</label>
+                            </div>
+
+                            <!-- Password input -->
+                            <div class="form-outline mb-4">
+                                <input type="password" id="registerPassword" name="Password" class="form-control" required minlength="6" />
+                                <label class="form-label" for="registerPassword">Password</label>
+                            </div>
+
+                            <!-- Repeat Password input -->
+                            <div class="form-outline mb-4">
+                                <input type="password" id="registerRepeatPassword" name="repeatPassword" class="form-control" required minlength="6" />
+                                <label class="form-label" for="registerRepeatPassword">Repeat password</label>
+                            </div>
+
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-primary btn-block mb-3">Sign up</button>
+
+                            <!-- Login link -->
+                            <div class="text-center">
+                                <p>Already a member? <a href="/login">Login</a></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.getElementById('signupForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    var password = document.getElementById('registerPassword').value;
+    var repeatPassword = document.getElementById('registerRepeatPassword').value;
+
+    if (password !== repeatPassword) {
+        var errorMessage = document.getElementById('errorMessage');
+        errorMessage.textContent = "Passwords do not match!";
+        errorMessage.style.display = "block";
+    } else {
+        this.submit();
+    }
+});
+</script>
+
+<style>
+  .form-outline {
+    position: relative;
+    margin-bottom: 1.5rem; /* Add some space below the form element */
+}
+
+/* Input field styling */
+.form-outline .form-control {
+    background-color: #343a40; /* Dark background color */
+    color: #fff; /* White text color */
+    border: 1px solid #6f42c1; /* Purple border color */
+    border-radius: 0.375rem; /* Rounded corners */
+    padding: 0.75rem 1rem; /* Padding inside the input */
+    font-size: 1rem; /* Font size */
+    transition: border-color 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+}
+
+.form-outline .form-control::placeholder {
+    color: #6c757d; /* Placeholder color */
+}
+
+/* Focus state for the input field */
+.form-outline .form-control:focus {
+    border-color: #6f42c1; /* Purple border color on focus */
+    background-color: #343a40; /* Keep dark background color */
+    box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25); /* Add a subtle purple shadow */
+}
+
+/* Label styling */
+.form-outline .form-label {
+    position: absolute;
+    top: 0.75rem; /* Position above the input box */
+    left: 1rem; /* Position to the left of the input box */
+    font-size: 0.875rem; /* Font size for the label */
+    color: #6c757d; /* Light grey color for the label */
+    background-color: #343a40; /* Match the input box background */
+    padding: 0 0.25rem; /* Small padding for label */
+    transition: color 0.3s ease, transform 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+    pointer-events: none; /* Ensure label does not interfere with user interaction */
+}
+
+/* Label style for focused input */
+.form-outline .form-control:focus ~ .form-label,
+.form-outline .form-control:not(:placeholder-shown) ~ .form-label {
+    color:white; /* Purple color when the input is focused or has text */
+    transform: translateY(-1.5rem); /* Move the label up */
+    font-size: 0.75rem; /* Smaller font size */
+    border-radius: 3px;
+}
+
+/* Placeholder text styling */
+.form-outline .form-control::placeholder {
+    color: #6c757d; /* Placeholder text color */
+}
+.form-group .form-label {
+    color: #6c757d; /* Light grey color for the label */
+}
+
+.form-group .form-control {
+    background-color: #343a40; /* Dark background color */
+    color: #fff; /* White text color */
+    border: 1px solid #6f42c1; /* Purple border color */
+    border-radius: 0.375rem; /* Rounded corners */
+    padding: 0.75rem 1rem; /* Padding inside the input */
+    font-size: 1rem; /* Font size */
+}
+
+.form-group .form-control::placeholder {
+    color: #6c757d; /* Placeholder color */
+}
+
+.form-group .form-control:focus {
+    border-color: #6f42c1; /* Purple border color on focus */
+    background-color: #343a40; /* Keep dark background color */
+    box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25); /* Add a subtle purple shadow */
+}
+.form-outline .form-control {
+    background-color: #343a40; /* Dark background color */
+    color: #fff; /* White text color */
+    border: 1px solid #6f42c1; /* Purple border color */
+    border-radius: 0.375rem; /* Rounded corners */
+    padding: 0.75rem 1rem; /* Padding inside the input */
+    font-size: 1rem; /* Font size */
+    transition: border-color 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+}
+
+.form-outline .form-control::placeholder {
+    color: #6c757d; /* Placeholder color */
+}
+
+/* Focus state for the input field */
+.form-outline .form-control:focus {
+    background-color: #343a40; /* Dark background color */
+    border-color: #6f42c1; /* Purple border color on focus */
+    box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25); /* Add a subtle purple shadow */
+}
+.form-outline .form-control:active {
+    background-color: #343a40; /* Dark background color */
+    border-color: #6f42c1; /* Purple border color on focus */
+    box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25); /* Add a subtle purple shadow */
+}
+
+/* Text color and background for disabled inputs */
+.form-outline .form-control:disabled {
+    background-color: #6c757d; /* Light grey background for disabled state */
+    color: #343a40; /* Dark text color */
+}
+
+</style>

@@ -1,0 +1,572 @@
+<section style="margin-top: 105px;">
+
+
+
+
+    <div class="home-slider ">
+        <div class="main-slider">
+
+            <div class="main-slider-item"><img src="img/slide5.jpg" alt="Slider Image" /></div>
+            <div class="main-slider-item"><img src="img/slider4.jpg" alt="Slider Image" /></div>
+            <div class="main-slider-item"><img src="img/slider6.jpg" alt="Slider Image" /></div>
+
+        </div>
+    </div>
+    <!-- Main Slider End -->
+
+
+    <!-- Feature Start-->
+    <div class="feature">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-12 feature-col">
+                    <div class="feature-content">
+                        <i class="fa fa-check-circle"></i>
+                        <h2>Trusted Shopping</h2>
+                        <p>
+                            Discover a World of Trusted Shopping and Great Deals!
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 feature-col">
+                    <div class="feature-content">
+                        <i class="fa fa-shopping-bag"></i>
+                        <h2>Quality Product</h2>
+                        <p>
+                            We assure you of top-quality products and unbeatable reliability
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12 feature-col">
+                    <div class="feature-content">
+                        <i class="fa fa-truck"></i>
+                        <h2>Fast Delivery</h2>
+                        <p>
+                            Swift and Efficient Delivery Service to Meet Your Needs!
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 feature-col">
+                    <div class="feature-content">
+                        <i class="fa fa-phone"></i>
+                        <h2>Telephone Support</h2>
+                        <p>
+                            Committed to Providing Outstanding Customer Support!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feature End-->
+
+
+    <!-- Category Start-->
+    <div class="category">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="category-img">
+                        <img src="img/crop.jpg" />
+                        <a class="category-name" href="">
+                            <h2>MacBook Pro</h2>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="category-img">
+                        <img src="img/resi2.jpg" />
+                        <a class="category-name" href="">
+                            <h2>Samsung S series</h2>
+                        </a>
+                    </div>
+                    <div class="category-img">
+                        <img src="img/resi.jpg" />
+                        <a class="category-name" href="">
+                            <h2>iphone 14 series</h2>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="category-img">
+                        <img src="img/crop2.jpg" />
+                        <a class="category-name" href="">
+                            <h2>Rog Scar</h2>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Category End-->
+
+
+    <!-- Featured Product Start -->
+    <div class="featured-product text-center" id="featured-products">
+        <div class="container">
+            <div class="section-header">
+                <h3>Featured Product</h3>
+                <p>
+                    Explore our top picked Products! Each item is chosen for its quality, popularity, and unique
+                    features. Find the best products that meet your needs and exceed your expectations.
+                </p>
+            </div>
+            <div class="row align-items-center product-slider product-slider-4">
+                {{#each products}}
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                    <div class="product-item">
+                        <div class="product-image">
+                            <a href="product-detail.html">
+                                <div class="image-container">
+                                    <img src="/product-images/{{this._id}}.jpg" alt="{{this.name}}" class="fit-image">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="product-content">
+                            <div class="title"><a href="#">{{this.name}}</a></div>
+                            <div class="price">₹{{this.price}}</div>
+                            <div class="ml-4">
+                                <button class="cartBtn" onclick="addToCart('{{this._id}}')">
+                                    <svg class="cart" fill="white" viewBox="0 0 576 512" height="1em"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
+                                        </path>
+                                    </svg>
+                                    Add To Cart
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512"
+                                        class="product">
+                                        <path
+                                            d="M211.8 0c7.8 0 14.3 5.7 16.7 13.2C240.8 51.9 277.1 80 320 80s79.2-28.1 91.5-66.8C413.9 5.7 420.4 0 428.2 0h12.6c22.5 0 44.2 7.9 61.5 22.3L628.5 127.4c6.6 5.5 10.7 13.5 11.4 22.1s-2.1 17.1-7.8 23.6l-56 64c-11.4 13.1-31.2 14.6-44.6 3.5L480 197.7V448c0 35.3-28.7 64-64 64H224c-35.3 0-64-28.7-64-64V197.7l-51.5 42.9c-13.3 11.1-33.1 9.6-44.6-3.5l-56-64c-5.7-6.5-8.5-15-7.8-23.6s4.8-16.6 11.4-22.1L137.7 22.3C155 7.9 176.7 0 199.2 0h12.6z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+
+        </div>
+    </div>
+    <!-- Featured Product End -->
+
+
+
+
+
+    <!-- Recent Product Start -->
+    <div class="recent-product" id="recent-products">
+        <div class="container">
+            <div class="section-header">
+                <h3>Recent Product</h3>
+                <p>
+                    Check out the latest arrivals! Discover the newest additions to our catalog, from cutting-edge tech
+                    to the latest fashion trends. Be the first to experience what's new.
+                </p>
+            </div>
+            <div class="row align-items-center product-slider product-slider-4">
+                {{#each recentProducts}}
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                    <div class="product-item">
+                        <div class="product-image">
+                            <a href="product-detail.html">
+                                <div class="image-container">
+                                    <img src="/product-images/{{this._id}}.jpg" alt="{{this.name}}" class="fit-image">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="product-content text-center">
+                            <div class="title"><a href="#">{{this.name}}</a></div>
+                            <div class="price">₹{{this.price}}</div>
+                            <div class="ml-4">
+                                <button class="cartBtn" onclick="addToCart('{{this._id}}')">
+                                    <svg class="cart" fill="white" viewBox="0 0 576 512" height="1em"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z">
+                                        </path>
+                                    </svg>
+                                    Add To Cart
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512"
+                                        class="product">
+                                        <path
+                                            d="M211.8 0c7.8 0 14.3 5.7 16.7 13.2C240.8 51.9 277.1 80 320 80s79.2-28.1 91.5-66.8C413.9 5.7 420.4 0 428.2 0h12.6c22.5 0 44.2 7.9 61.5 22.3L628.5 127.4c6.6 5.5 10.7 13.5 11.4 22.1s-2.1 17.1-7.8 23.6l-56 64c-11.4 13.1-31.2 14.6-44.6 3.5L480 197.7V448c0 35.3-28.7 64-64 64H224c-35.3 0-64-28.7-64-64V197.7l-51.5 42.9c-13.3 11.1-33.1 9.6-44.6-3.5l-56-64c-5.7-6.5-8.5-15-7.8-23.6s4.8-16.6 11.4-22.1L137.7 22.3C155 7.9 176.7 0 199.2 0h12.6z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    <!-- Recent Product End -->
+
+
+    <!-- Brand Start -->
+    <div class="brand">
+        <div class="container">
+            <div class="section-header">
+                <h3>Our Brands</h3>
+                <p>
+                    Explore a curated selection of trusted names known for innovation, quality, and performance. Find
+                    the best in tech from leading manufacturers.
+                </p>
+            </div>
+            <div class="brand-slider">
+                <div class="brand-item"><img src="img/l8.png" alt=""></div>
+                
+                <div class="brand-item"><img src="img/l6.png" alt=""></div>
+               
+                <div class="brand-ite"><img src="img/l5.png" alt=""></div>
+                <div class="brand-item"><img src="img/l9.png" alt=""></div>
+               
+                 <div class="brand-item"><img src="img/l3.png" alt=""></div>
+                  <div class="brand-item"><img src="img/l7.png" alt=""></div>
+            </div>
+        </div>
+    </div>
+    <!-- Brand End -->
+
+
+    <!-- Footer Start -->
+    <div class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h1>Shopping Cart User</h1>
+                        <p>
+                            Browse our wide range of products from trusted brands, enjoy seamless shopping, and benefit
+                            from fast delivery and exceptional customer support.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h3 class="title">Useful Pages</h3>
+                        <ul>
+                             <li><a href="/orders">Orders Page</a></li>
+                            
+                            <li><a href="/login">Login Page</a></li>
+                            <li><a href="/place-order">Place Order Page</a></li>
+                           
+                            <li><a href="/cart">Cart Page</a></li>
+                            
+                            <li><a href="/products">Products Page</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h3 class="title">Quick Links</h3>
+                        <ul>
+                            <li><a href="/products">Products</a></li>
+                            <li><a href="/cart">Cart</a></li>
+                            <li><a href="/place-order">Place Order</a></li>
+                            <li><a href="/orders">Orders</a></li>
+                            <li><a href="/login">Login & Register</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-widget">
+                        <h3 class="title">Get in Touch</h3>
+                        <div class="contact-info">
+                            <p><i class="fa fa-map-marker"></i>Kerala | India</p>
+                            <p><i class="fa fa-envelope"></i>alantomanu501@gmail.com</p>
+                            <p><i class="fa fa-phone"></i>+91 9562773715</p>
+                            <div class="social-icons">
+                                <a href="https://www.instagram.com/alanto?utm_source=qr&igsh=eGp6N3Zyc3I1aDNx" target="_blank" class="social-link">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://github.com/alanto-manu" target="_blank" class="social-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/alanto-manu-344011280?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="social-link">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Footer End -->
+
+
+            <!-- Footer Bottom Start -->
+
+            <!-- Footer Bottom End -->
+
+
+            <!-- Back to Top -->
+            <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+
+            <!-- JavaScript Libraries -->
+            <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+            <script src="lib/easing/easing.min.js"></script>
+            <script src="lib/slick/slick.min.js"></script>
+
+
+            <!-- Template Javascript -->
+            <script src="js/main.js"></script>
+
+
+
+</section>
+
+<style>
+    /* Ensure all elements are using border-box sizing */
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    /* Ensure body and HTML take up full width */
+    html,
+    body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+
+    }
+
+    /* Ensure the main container takes up full width */
+    .container,
+    .container-fluid {
+        width: 100%;
+        padding: 0 15px;
+        margin: 0 auto;
+    }
+
+    /* Add margin and padding reset for elements */
+    .section-header,
+    .product-item,
+    {
+    margin: 0;
+    padding: 0;
+    }
+
+    /* Ensure images are responsive */
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    /* Ensure no overflowing content */
+    .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .custom-hr {
+        border: 0;
+        height: 5px;
+        background: #c9c7cd;
+        /* Purple color */
+        margin: 0 auto;
+        width: 50%;
+        border-radius: 2px;
+        align-self: center;
+    }
+
+
+
+    /* Ensure proper padding and margin for columns */
+    .col-lg-3,
+    .col-md-4,
+    .col-sm-6,
+    .col-xs-12 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    * {
+        margin-left: 0;
+
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .container {
+        overflow-x: hidden;
+    }
+
+    .some-element {
+        width: 100%;
+        max-width: 100vw;
+    }
+
+    .header {
+        background-color: #6f42c1;
+        /* Purple background */
+        padding: 20px 0;
+    }
+
+    .crafted-with-passion {
+        color: #ffffff;
+        /* White color */
+        font-size: 24px;
+        font-weight: bold;
+        font-family: 'Poppins', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin: 0;
+        /* Remove default margin */
+    }
+
+    .custom-container {
+        max-width: 800px;
+        margin: 0 auto;
+        height: auto;
+        /* Remove fixed height */
+        padding: 0 20px;
+        /* Add padding for small screens */
+    }
+
+    @media (max-width: 768px) {
+        .header {
+            background-color: #6f42c1;
+            /* Purple background */
+
+        }
+
+        .crafted-with-passion {
+            font-size: 20px;
+            /* Smaller font size for small screens */
+        }
+
+        .custom-container {
+            background-color: #6f42c1;
+
+        }
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 1rem;
+        /* Space between icons */
+        justify-content:start;
+        /* Center the icons */
+        padding: 1rem;
+        /* Padding around the icons */
+    }
+
+    .social-link i {
+        color: inherit;
+        /* Inherit color from parent element */
+        font-size:x-large;
+        /* Adjust the size of the icons */
+        transition: color 0.3s ease;
+        /* Smooth transition for color changes */
+    }
+
+    .social-link i:hover {
+        color: #6f42c1;
+        /* Purple color on hover */
+    }
+
+
+
+    .cartBtn {
+        width: 150px;
+        height: 40px;
+        border: none;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        color: white;
+        font-weight: 500;
+        position: relative;
+        background-color: #6f42c1;
+        box-shadow: 0 20px 30px -7px rgba(27, 27, 27, 0.219);
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+        overflow: hidden;
+        margin-left: 16px;
+    }
+
+
+    .cart {
+        z-index: 2;
+    }
+
+    .cartBtn:focus {
+        outline: none;
+        /* Removes the default focus outline */
+        box-shadow: 0 0 0 2px #6f42c1;
+
+    }
+
+
+    .product {
+        position: absolute;
+        width: 12px;
+        border-radius: 3px;
+        content: "";
+        left: 23px;
+        bottom: 23px;
+        opacity: 0;
+        z-index: 1;
+        fill: rgb(211, 211, 211);
+    }
+
+    .cartBtn:hover .product {
+        animation: slide-in-top 1.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+
+    @keyframes slide-in-top {
+        0% {
+            transform: translateY(-30px);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translateY(0) rotate(-90deg);
+            opacity: 1;
+        }
+    }
+
+    .cartBtn:hover .cart {
+        animation: slide-in-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+
+    @keyframes slide-in-left {
+        0% {
+            transform: translateX(-10px);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .cartBtn {
+            margin-left: 50px;
+        }
+    }
+
+    /* Ensure the container has a specific size */
+</style>

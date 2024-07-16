@@ -1,0 +1,98 @@
+<section class="bg-dark py-5" style="margin-top: 100px;">
+    <div class="container">
+        <div class="row">
+            <div class="col" style="color: rgba(255, 255, 255, 0.819);">
+                <p>
+                    <span class="h2" style="color: white;">Products in Order</span>
+                    <span class="h4">({{totalproducts}} item in your order)</span>
+                </p>
+                <div class="card mb-4 ">
+                    <div class="card-body p-4">
+                        {{#each products}}
+                        <div class="row align-items-center mb-4 border-bottom pb-4">
+                            <div class="col-md-3 d-flex justify-content-center">
+                                <img src="/product-images/{{this.product._id}}.jpg" class="img-fluid rounded-3" alt="Product image">
+                            </div>
+                            <div class="col-md-5 text-center">
+                                <p class="h6 mt-2">Product Name:</p>
+                                <p class="lead fw-bold mb-2">{{this.product.name}}</p>
+                                <p class=" ">Description:</p>
+                                <p class="">{{this.product.description}}</p>
+                            </div>
+                            <div class="col-md-2 text-center  ">
+                                <p class="h6 mt-2 ">Quantity:</p>
+                                <p class="lead fw-bold pb-4">{{this.quantity}}</p>
+                            
+                          
+                                <p class="h6 mb-2 ">Price</p>
+                                <p class="lead fw-bold mb-0 ">₹ {{this.product.price}}</p>
+                                </div>
+                                  <div class="col-md-2 text-center ">
+                                <p class="h6 mt-2">Total</p>
+                                <p class="lead fw-bold mb-0 pb-5 ">{{formatPrice (multiply this.product.price this.quantity)}}</p>
+                               <a href="/cart" class="mt-2" onclick="addToCart('{{this.product._id}}')">
+   <button> <strong>Buy it again</strong></button>
+   
+</a>
+
+                            </div>
+                        </div>
+                        {{/each}}
+
+                        <!-- Total Amount Card -->
+                        
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="d-flex justify-content-start">
+                    
+                    <a href="/orders" class="btn btn-secondary mt-2">
+                    <i class="mdi mdi-arrow-left me-1" style="color: #ffffff;"></i>
+                      <strong style="color: #ffffff;"> Go Back</strong>
+                       </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    button {
+ padding: 15px 25px;
+ border: unset;
+ border-radius: 15px;
+ color: #6f42c1;
+ z-index: 1;
+ background: #e8e8e8;
+ position: relative;
+ font-weight: 1000;
+ font-size: 13px;
+ -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+ box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+ transition: all 250ms;
+ overflow: hidden;
+}
+
+button::before {
+ content: "";
+ position: absolute;
+ top: 0;
+ left: 0;
+ height: 100%;
+ width: 0;
+ border-radius: 15px;
+ background-color:#6f42c1;;
+ z-index: -1;
+ -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+ box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+ transition: all 250ms
+}
+
+button:hover {
+ color: #e8e8e8;
+}
+
+button:hover::before {
+ width: 100%;
+}
+</style>

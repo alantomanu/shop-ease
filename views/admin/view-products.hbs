@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+
+  
+  
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.css">
+
+   </head>
+<body class=" text-white"  style="background-color: #343a40;">
+<section>
+    <div class="container">
+        <!-- Add Product Button -->
+        <div class="row mt-3">
+            <div class="col-12 text-end">
+                <a href="/admin/add-product" class="btn btn-success float-right">Add Product</a>
+            </div>
+        </div>
+
+        <!-- Products Table -->
+        <div class="row mt-4">
+            <div class="col-12" >
+                <div class="table-responsive" >
+                    <table class="table table-dark table-striped" id="productTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Edit</th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each products}}
+                            <tr>
+                                <th scope="row">{{increment @index}}</th>
+                                <td>{{this.name}}</td>
+                                <td>{{this.category}}</td>
+                                <td class="text-break">{{this.description}}</td>
+                                <td>₹{{this.price}}</td>
+                                <td><img style="width: 70px; height: 90px; " src="/product-images/{{this._id}}.jpg" alt="Product Image"></td>
+                                <td>
+                                    <a href="/admin/edit-product?id={{this._id}}" class="btn btn-primary ">Edit</a>
+                                </td>
+                                <td>
+                                    <a href="/admin/delete-product?id={{this._id}}" class="btn btn-danger "
+                                        onclick="return confirm('Do you want to delete {{this.name}}?')">Delete</a>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+
+<script>
+    new DataTable('#productTable');
+</script>
+
+<style>
+       :root {
+      --dark: #343a40;
+      --purple: #6f42c1;
+      --light-text: #f8f9fa;
+      --input-bg: #495057;
+      --input-border: #6f42c1;
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--light-text);
+    }
+
+    .dataTables_wrapper .dataTables_filter input {
+      background-color: var(--input-bg) !important;
+      color: var(--light-text) !important;
+      border: 1px solid var(--input-border) !important;
+    }
+
+    .dataTables_wrapper .dataTables_length select {
+      background-color: var(--input-bg) !important;
+      color: var(--light-text) !important;
+      border: 1px solid var(--input-border) !important;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+      background-color: var(--dark) !important;
+      color: var(--light-text) !important;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current,
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+      background-color: var(--purple) !important;
+      color: var(--light-text) !important;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+      background-color: var(--input-bg) !important;
+      color: var(--light-text) !important;
+    }
+    /* Custom CSS for dark theme DataTables */
+    .dataTables_wrapper .dataTables_filter input {
+        background-color: #343a40;
+        color: #fff;
+        border: 1px solid #6f42c1;
+    }
+
+    .dataTables_wrapper .dataTables_length select {
+        background-color: #343a40;
+        color: #fff;
+        border: 1px solid #6f42c1;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        background-color: #343a40;
+        color: #fff !important;
+        border: 1px solid #6f42c1;
+        margin: 2px;
+        padding: 6px 12px;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+        background-color: #6f42c1 !important;
+        color: #fff !important;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        background-color: #6f42c1 !important;
+        color: #fff !important;
+    }
+
+    .dataTables_wrapper .dataTables_info {
+        color: #fff;
+    }
+
+    .dataTables_wrapper .dataTables_paginate {
+        margin-top: 10px;
+    }
+
+    .table.dataTable thead th {
+        background-color: #6f42c1;
+        color: #fff;
+    }
+
+    .table.dataTable tbody tr {
+        background-color: #343a40;
+        color: #fff;
+    }
+
+    .table.dataTable {
+        border-color: #6f42c1;
+    }
+</style>
+</html>

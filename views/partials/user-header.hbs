@@ -1,0 +1,470 @@
+<header>
+    <div class="main-navbar shadow-sm sticky-top">
+        <div class="top-navbar">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-2 my-auto d-none d-sm-none d-md-block d-lg-block ">
+                       <a> <h4 href="/">Shopping Cart User</h4></a>
+                    </div>
+                    <div class="col-md-5 my-auto">
+
+                        <form role="search" action="/search" method="GET">
+                            <div class="search-container d-flex input-group">
+                                <input id="searchQuery" type="search" placeholder="Search your product" name="query"
+                                    class="form-control  search-input" />
+                                <button class="btn btn-secondary" type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+
+
+                    <div class="col-md-5 my-auto d-flex justify-content-end">
+                        <ul class="nav">
+                            <!-- Cart Link -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="/cart">
+                                    <i class="fa fa-shopping-cart"></i> Cart (<span id="cartCount">{{cartCount}}</span>)
+                                </a>
+                            </li>
+
+                            <!-- User Dropdown Menu -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-user"> </i>
+                                    {{#if user}}
+                                    {{ user.name}}
+                                    {{else}}
+                                    Accounts
+                                    {{/if}}
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    {{#if user}}
+                                    <li><a class="dropdown-item" href="/orders"><i class="fa fa-list"></i> My Orders</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="/cart"><i class="fa fa-shopping-cart"></i> My
+                                            Cart</a></li>
+                                    <li><a class="dropdown-item" href="/logout"><i class="fa fa-sign-out"></i>
+                                            Logout</a></li>
+                                    {{else}}
+                                    <li><a class="dropdown-item" href="/login"><i class="fa fa-sign-in-alt"></i>
+                                            Login</a></li>
+                                    {{/if}}
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand d-block d-sm-block d-md-none d-lg-none ml-2" href="/">
+                    Shopping Cart User
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item dropdown products-dropdown">
+                            <a class="nav-link dropdown-toggle" href="/products" id="productsDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Products
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+                                {{#each categories}}
+                                <li><a class="dropdown-item" href="/products?category={{this}}">{{this}}</a></li>
+                                {{/each}}
+                            </ul>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/#recent-products">New Arrivals</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/#featured-products">Featured Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/products?category=smartphone">Smart Phones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/products?category=laptop">Laptops</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/products?category=smartwatch">Smart Watches</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<style>
+    /* Main Navbar Styles */
+    .brand-name {
+        font-family: 'Poppins', sans-serif;
+
+        font-size: 0.5rem;
+        /* Increase the size of the text */
+        color: white;
+        /* Purple color */
+
+    }
+
+    .main-navbar {
+        border-bottom: 1px solid #6f42c1;
+        /* Purple border color */
+        background-color: #343a40;
+        /* Dark background color */
+        position: fixed;
+        /* Fix the navbar at the top */
+        top: 0;
+        /* Align to the top */
+        left: 0;
+        /* Align to the left */
+        width: 100%;
+        /* Full width */
+        z-index: 1000;
+        /* Ensure it is on top of other content */
+    }
+
+    @keyframes dropdown-menu-slide {
+        from {
+            transform: translateY(-10%);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    /* Top Navbar Styles */
+    .main-navbar .top-navbar {
+        background-color: #6f42c1;
+        /* Purple background color */
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    /* Brand Name */
+    .main-navbar .top-navbar .brand-name {
+        color: #fff;
+        /* White text color */
+        font-size: 1.25rem;
+        /* Adjust font size */
+    }
+
+    /* Nav Link Styles */
+    .main-navbar .top-navbar .nav-link {
+        color: #fff;
+        /* White text color */
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    /* Dropdown Menu Styles */
+    .main-navbar .top-navbar .dropdown-menu {
+        padding: 0;
+        border-radius: 0;
+        background-color: #343a40;
+        /* Dark background color for dropdown */
+        border: none;
+        /* Remove border */
+    }
+
+    .main-navbar .top-navbar .dropdown-menu .dropdown-item {
+        padding: 8px 16px;
+        border-bottom: 1px solid #6f42c1;
+        /* Purple border color */
+        font-size: 14px;
+        color: #fff;
+
+        /* White text color */
+    }
+
+    .dropdown-item {
+        border-radius: 5px;
+
+    }
+
+    .main-navbar .top-navbar .dropdown-menu .dropdown-item:hover,
+    .main-navbar .top-navbar .dropdown-menu .dropdown-item:focus {
+        background-color: #2b2f33;
+        /* No background color on hover */
+        color: white;
+        /* Maintain white text color */
+    }
+
+    .main-navbar .top-navbar .dropdown-menu .dropdown-item i {
+        width: 20px;
+        text-align: center;
+        color: #6f42c1;
+        /* Purple icon color */
+        font-size: 14px;
+    }
+
+    /* Navbar Styles */
+    .main-navbar .navbar {
+        padding: 0;
+        background-color: #00000000;
+        /* Dark background color */
+    }
+
+    /* Navbar Links */
+    .main-navbar .navbar .nav-item .nav-link {
+        padding: 8px 20px;
+        color: #fff;
+        /* White text color */
+        font-size: 15px;
+    }
+
+    /* Navbar Toggler Button */
+    .main-navbar .navbar-toggler {
+        border: none;
+        /* Remove border */
+    }
+
+    /* Responsive Styles */
+    @media only screen and (max-width: 600px) {
+        .main-navbar .top-navbar .nav-link {
+            font-size: 12px;
+            padding: 8px 10px;
+        }
+    }
+
+    /* Products Dropdown Styles */
+    .products-dropdown .dropdown-menu {
+        padding: 0;
+        border-radius: 0;
+        background-color: #343a40;
+        /* Dark background color for dropdown */
+        border: none;
+        /* Remove border */
+        min-width: 150px;
+        /* Set a minimum width for the dropdown */
+        animation: dropdown-menu-slide 0.3s ease;
+        /* Add slide-in animation */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        /* Add shadow for better visibility */
+        position: absolute;
+        /* Position dropdown menu correctly */
+        top: 100%;
+        /* Align dropdown menu below the dropdown toggle */
+        left: 0;
+        /* Align dropdown menu with the dropdown toggle */
+        z-index: 1000;
+        /* Ensure dropdown menu is on top of other content */
+    }
+
+    /* Dropdown Menu Items */
+    .products-dropdown .dropdown-menu .dropdown-item {
+        padding: 8px 16px;
+        border-bottom: 1px solid #6f42c1;
+        /* Purple border color */
+        font-size: 14px;
+        color: #fff;
+        /* White text color */
+    }
+
+    /* Dropdown Item Hover and Focus */
+    .products-dropdown .dropdown-menu .dropdown-item:hover,
+    .products-dropdown .dropdown-menu .dropdown-item:focus {
+        background-color: #2b2f33;
+        /* Darker background color on hover */
+        color: #fff;
+        /* Maintain white text color */
+    }
+
+    /* Dropdown Item Icons */
+    .products-dropdown .dropdown-menu .dropdown-item i {
+        width: 20px;
+        text-align: center;
+        color: #6f42c1;
+        /* Purple icon color */
+        font-size: 14px;
+    }
+
+    /* Dropdown Toggle Button */
+    .products-dropdown .dropdown-toggle {
+        color: #fff;
+        /* White text color */
+        font-size: 16px;
+        /* Font size for dropdown toggle */
+    }
+
+    /* Dropdown Toggle Button Hover */
+    .products-dropdown .dropdown-toggle:hover {
+        color: #6f42c1;
+        /* Purple text color on hover */
+    }
+
+    /* Container for the search box and button */
+    .search-container {
+        position: relative;
+        /* Positioning for the button to overlap the input */
+        max-width: 100%;
+        /* Make sure it uses the full width of its parent */
+        margin: 0 auto;
+        /* Center the container */
+    }
+
+    /* Search input field */
+    .search-input {
+        background-color: #343a40;
+        /* Dark background for input */
+        color: #ffffff;
+        /* Light text color for input */
+        border: 1px solid #6f42c1;
+        /* Purple border color for input */
+        border-radius: 5px 0 0 5px;
+        /* Rounded corners for the left side */
+        padding: 0.75rem 1.25rem;
+        /* Padding for the input */
+        padding-right: 3.5rem;
+        /* Space for the button inside */
+        width: 100%;
+        /* Full width of the container */
+        box-sizing: border-box;
+        /* Ensure padding and border are included in the width */
+        transition: border-color 0.3s ease;
+        /* Smooth border color transition */
+    }
+
+    /* Remove default outline */
+    .search-container:focus,
+    .search-container:hover {
+        outline: none;
+    }
+
+    /* Placeholder text color */
+    .search-input::placeholder {
+        color: #a6a6a6;
+    }
+
+    /* Change border color on focus */
+    .search-input:focus {
+        border-color: #6f42c1;
+        /* Keep the same border color */
+        background-color: #343a40;
+        /* Slightly different background color on focus */
+        outline: none;
+        /* Remove default outline */
+    }
+
+    /* Search button styles */
+    .search-button {
+        position: absolute;
+        /* Absolute positioning inside the input */
+        top: 50%;
+        /* Center the button vertically */
+        right: 0;
+        /* Align the button to the right side of the input */
+        transform: translateY(-50%);
+        /* Center the button */
+        background-color: #6f42c1;
+        /* Purple background color */
+        color: #ffffff;
+        /* White text color */
+        border: none;
+        /* Remove default border */
+        border-radius: 0 5px 5px 0;
+        /* Rounded corners for the right side */
+        margin-bottom: 50px;
+        font-size: 1rem;
+        /* Font size for the button */
+        cursor: pointer;
+        /* Pointer cursor on hover */
+        transition: background-color 0.3s ease;
+        /* Smooth background color transition */
+        height: auto;
+        display: flex;
+        /* Center icon */
+        align-items: center;
+        /* Center icon vertically */
+    }
+
+    /* Search button hover effect */
+    .search-button:hover {
+        background-color: #5a2a9e;
+        /* Slightly darker purple on hover */
+    }
+
+    /* Suggestions list styles */
+
+    /* Responsive design for mobile screens */
+    @media (max-width: 768px) {
+        .search-container {
+            width: 100%;
+            /* Full width of the screen */
+            margin: 0 1rem;
+            /* Add some margin for mobile */
+        }
+
+        .search-input {
+            padding-right: 3rem;
+            /* Adjust space for the button on mobile */
+        }
+
+        .search-button {
+            right: 0.5rem;
+            /* Adjust button position for mobile */
+            font-size: 0.9rem;
+            /* Slightly smaller font size for mobile */
+            padding: 0.5rem 1rem;
+            /* Adjust padding for the button on mobile */
+        }
+    }
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const cartCountElement = document.getElementById('cartCount');
+        if (!cartCountElement.textContent) {
+            cartCountElement.textContent = '0';
+        }
+    });
+    const category = 'smartphone'; // Change this dynamically if needed
+    const link = `/products?category=${encodeURIComponent(category)}`;
+    document.querySelector('#categoryLink').setAttribute('href', link);
+    document.addEventListener('DOMContentLoaded', () => {
+        const searchInput = document.getElementById('searchQuery');
+        const suggestionsList = document.getElementById('suggestions');
+
+        searchInput.addEventListener('input', async () => {
+            const query = searchInput.value;
+
+            if (query.length > 2) {
+                const response = await fetch(`/search/suggestions?query=${query}`);
+                const suggestions = await response.json();
+
+                suggestionsList.innerHTML = '';
+                suggestions.forEach(suggestion => {
+                    const li = document.createElement('li');
+                    li.textContent = suggestion;
+                    li.addEventListener('click', () => {
+                        searchInput.value = suggestion;
+                        suggestionsList.innerHTML = '';
+                    });
+                    suggestionsList.appendChild(li);
+                });
+            } else {
+                suggestionsList.innerHTML = '';
+            }
+        });
+    });
+
+</script>

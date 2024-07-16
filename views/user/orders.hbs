@@ -1,0 +1,614 @@
+<section style="margin-top: 120px;" >
+  <div class="container py-5">
+    <!-- Filter Dropdown -->
+  
+
+
+    {{#if orders.length}}
+    {{#each (reverseArray orders)}}
+    <!-- Orders Container -->
+    <div class="row">
+      <!-- Order Card Start -->
+      <div class="col-12 mb-4">
+        <div class="card card-order">
+          <div class="card-body">
+            <!-- Order Header -->
+            <h3 class="mb-3 title" style="font-size: 1.7rem; color: #ffffff;">
+              <strong>Order no: {{increment @index}}</strong>
+            </h3>
+
+            <!-- Order Details -->
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <h6>Order Id:</h6>
+                <p>#{{this._id}}</p>
+              </div>
+              <div class="col-md-6 mb-3">
+                <h6>Delivery Address:</h6>
+                <p>{{this.deliveryDetails.address}}, {{this.deliveryDetails.city}}, {{this.deliveryDetails.pincode}}</p>
+              </div>
+              <div class="col-md-6 mb-3">
+                <h6>Mobile:</h6>
+                <p>{{this.deliveryDetails.mobile}}</p>
+              </div>
+              <div class="col-md-6 mb-3">
+                <h6>Order Date:</h6>
+                <p>{{formatDate this.deliveryDetails.date}}</p>
+              </div>
+              <div class="col-md-6 mb-3">
+                <h6>Payment Method:</h6>
+                <p>{{this.paymentMethod}}</p>
+              </div>
+              <div class="col-md-6 mb-3">
+                <h6>Amount:</h6>
+                <p>₹{{this.totalAmount}}</p>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <div class="order-status-container mb-3">
+                  <h5>Order Status:</h5>
+                  <h5><strong>{{this.status}}</strong></h5>
+                </div>
+              </div>
+
+            </div>
+            <!-- Product Details Section -->
+            {{#if (ne this.status 'pending')}}
+            <div class="order-status">
+              <div class="progress-bar" id="progressbar">
+                <div class="progress" style="width: 100%;"></div>
+                <div class="tick-boxes">
+                  <div
+                    class="tick-box {{#if (or (eq this.status 'placed') (eq this.status 'packed') (eq this.status 'shipped') (eq this.status 'on the way') (eq this.status 'delivered'))}}done{{/if}}">
+                    {{#if (or (eq this.status 'placed') (eq this.status 'packed') (eq this.status 'shipped') (eq
+                    this.status 'on the way') (eq this.status 'delivered'))}}
+                    <i class="fas fa-check"></i>
+                    {{/if}}
+                  </div>
+                  <div
+                    class="tick-box {{#if (or (eq this.status 'packed') (eq this.status 'shipped') (eq this.status 'on the way') (eq this.status 'delivered'))}}done{{/if}}">
+                    {{#if (or (eq this.status 'packed') (eq this.status 'shipped') (eq this.status 'on the way')
+                    (eq this.status 'delivered'))}}
+                    <i class="fas fa-check"></i>
+                    {{/if}}
+                  </div>
+                  <div
+                    class="tick-box {{#if (or (eq this.status 'shipped') (eq this.status 'on the way') (eq this.status 'delivered'))}}done{{/if}}">
+                    {{#if (or (eq this.status 'shipped') (eq this.status 'on the way') (eq this.status 'delivered'))}}
+                    <i class="fas fa-check"></i>
+                    {{/if}}
+                  </div>
+                  <div
+                    class="tick-box {{#if (or (eq this.status 'on the way') (eq this.status 'delivered'))}}done{{/if}}">
+                    {{#if (or (eq this.status 'on the way') (eq this.status 'delivered'))}}
+                    <i class="fas fa-check"></i>
+                    {{/if}}
+                  </div>
+                  <div class="tick-box {{#if (eq this.status 'delivered')}}done{{/if}}">
+                    {{#if (eq this.status 'delivered')}}
+                    <i class="fas fa-check"></i>
+                    {{/if}}
+                  </div>
+                </div>
+              </div>
+              <div class="status-steps">
+                <div
+                  class="step {{#if (or (eq this.status 'placed') (eq this.status 'packed') (eq this.status 'shipped') (eq this.status 'on the way') (eq this.status 'delivered'))}}active{{/if}}">
+                  <h5><i class="fas fa-clipboard-list"></i> Order Placed</h5>
+                </div>
+                <div
+                  class="step {{#if (or (eq this.status 'packed') (eq this.status 'shipped') (eq this.status 'on the way') (eq this.status 'delivered'))}}active{{/if}}">
+                  <h5><i class="fas fa-box"></i> Order Packed</h5>
+                </div>
+                <div
+                  class="step {{#if (or (eq this.status 'shipped') (eq this.status 'on the way') (eq this.status 'delivered'))}}active{{/if}}">
+                  <h5><i class="fas fa-clipboard-list"></i> Shipped</h5>
+                </div>
+                <div
+                  class="step {{#if (or (eq this.status 'on the way') (eq this.status 'delivered'))}}active{{/if}}">
+                  <h5><i class="fas fa-shipping-fast"></i> Out For Delivery</h5>
+                </div>
+                <div class="step {{#if (eq this.status 'delivered')}}active{{/if}}">
+                  <h5><i class="fas fa-home"></i> Order Delivered</h5>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 m-3">
+              <a href="/products-orderd?id={{this._id}}">
+                <button id="bottone1">View products in this order</button>
+
+              </a>
+            </div>
+            {{else}}
+            <div class="button-container d-flex flex-column flex-md-row justify-content-between align-items-center">
+              <div class="left-button mb-2 mb-md-0">
+                <a href="/products-orderd?id={{this._id}}">
+                  <button id="bottone1">View products in this order</button>
+
+                </a>
+              </div>
+              <div class="right-button">
+                <a href="/repeat-order?id={{this._id}}">
+                  <button class="cta">
+                    <button class="learn-more">
+                      <span class="circle" aria-hidden="true">
+                        <span class="icon arrow"></span>
+                      </span>
+                      <span class="button-text">Complete It Now</span>
+                    </button></a>
+              </div>
+
+            </div>
+
+            {{/if}}
+
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+    {{else}}
+    <div class="row">
+      <!-- Order Card Start -->
+      <div class="col-12 mb-4">
+        <div class="card card-order">
+          <div class="card-body">
+            <!-- Order Header -->
+            <h3 class="mb-3 title" style="font-size: 1.7rem; color: #ffffff;">
+              <strong>Orders: 0</strong>
+            </h3>
+            <!-- Order Details -->
+            <div class="row">
+              <div class="col-12">
+                <div class="text-center my-5">
+                  <i class="fas fa-box-open fa-3x mb-3"></i>
+                  <h4>No Orders Yet</h4>
+                  <p>You will be able to view your recent orders here</p>
+                  <a href="/" class="btn btn-secondary mt-2">
+                    <strong style="color: #ffffff;">Make An Order</strong>
+                    <i class="mdi mdi-arrow-right me-1" style="color: #ffffff;"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/if}}
+  </div>
+</section>
+
+
+<script>
+  const products = [
+    { _id: 'product1', name: 'Product 1', price: 10.99 },
+    { _id: 'product2', name: 'Product 2', price: 9.99 },
+    { _id: 'product3', name: 'Product 3', price: 12.99 },
+    // ...
+  ]; // Get the list of products to add to the cart
+
+  const userId = {{ userId }}; // Get the current user ID
+
+  document.getElementById('add-all-btn').addEventListener('click', async () => {
+    try {
+      const response = await fetch('/add-all-products-to-cart', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ products, userId }),
+      });
+
+      const result = await response.json();
+      if (result.status) {
+        console.log('All products added to cart successfully');
+        // Update the cart template to reflect the changes
+        //...
+      } else {
+        console.error('Error adding all products to cart:', result.error);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  });
+
+  $(document).ready(function () {
+    $('.dropdown-toggle').dropdown(); // Initialize dropdown
+
+    $('.dropdown-menu a').on('click', function () {
+      const sortBy = $(this).attr('href'); // Get sort type from href attribute
+      console.log('Sort by:', sortBy);
+      // Redirect to the appropriate URL based on sort type
+      window.location.href = sortBy;
+    });
+  });
+
+  function getProgressWidth(status) {
+    switch (status) {
+      case 'placed':
+        return 20;
+      case 'packed':
+        return 40;
+      case 'shipped':
+        return 60;
+      case 'on the way':
+        return 80;
+      case 'order delivered':
+        return 100;
+      default:
+        return 0;
+    }
+  }
+
+  orders.forEach(order => {
+    order.progressWidth = getProgressWidth(order.status);
+  });
+
+</script>
+<style>
+  .order-status {
+    margin: 20px;
+  }
+
+  .progress-bar {
+    height: 10px;
+    background-color: #444;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .progress {
+    height: 10px;
+    background: linear-gradient(90deg, #6f42c1, #a85bff);
+    border-radius: 10px;
+    width: 0;
+    /* Start width at 0 */
+    transition: width 0.4s ease-in-out;
+    /* Smooth width transition */
+  }
+
+  /* Class to apply 100% width */
+  .progress-full {
+    width: 100%;
+  }
+
+  .tick-boxes {
+    position: absolute;
+    top: -17px;
+    /* Adjusted for better alignment */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    /* Added more padding */
+  }
+
+  .tick-box {
+    width: 25px;
+    /* Slightly larger size */
+    height: 25px;
+    /* Slightly larger size */
+    border-radius: 50%;
+    background-color: #444;
+    /* Dark background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #6f42c1;
+    /* Purple border */
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    /* Smooth transitions */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Soft shadow for depth */
+  }
+
+  .tick-box:hover {
+    background-color: #555;
+    /* Darker color on hover */
+    transform: scale(1.2);
+    /* Slightly larger on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    /* Stronger shadow on hover */
+  }
+
+  .tick-box.done {
+    background-color: #6f42c1;
+    /* Purple for completed steps */
+    transform: scale(1.2);
+    /* Slightly larger for completed */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    /* Stronger shadow for completed */
+  }
+
+  .tick-box.done i {
+    color: #fff;
+    /* White icon color */
+  }
+
+  .tick-box i {
+    font-size: 18px;
+    /* Larger icons */
+    color: #6f42c1;
+    /* Purple icon color */
+  }
+
+
+  .status-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .step {
+    flex: 1;
+  }
+
+  .step i {
+    font-size: 24px;
+  }
+
+  .step h5 {
+    font-size: 14px;
+    margin-top: 5px;
+    color: #ccc;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 76px) {
+    .progress-bar {
+      width: 10px;
+      height: 100%;
+      background-color: #444;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .progress {
+      width: 10px;
+      height: 100%;
+      background: linear-gradient(180deg, #6f42c1, #a85bff);
+      border-radius: 10px;
+      transition: height 0.5s ease-in-out;
+    }
+
+    .tick-boxes {
+      position: absolute;
+      top: 0;
+      left: -12px;
+      width: 10px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 5px 0;
+    }
+
+    .tick-box {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background-color: #444;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid #6f42c1;
+      transition: background-color 0.3s ease-in-out;
+      margin-bottom: 10px;
+    }
+
+    .status-steps {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .step i {
+      font-size: 24px;
+      margin-right: 10px;
+    }
+
+    .step h5 {
+      font-size: 14px;
+      margin-top: 0;
+      color: #ccc;
+    }
+  }
+
+  @keyframes progress {
+    0% {
+      width: 0;
+    }
+
+    100% {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 76px) {
+    @keyframes progress {
+      0% {
+        height: 0;
+      }
+
+      100% {
+        height: 100%;
+      }
+    }
+  }
+
+  .order-status-container {
+    background-color: #495057;
+    /* Slightly lighter background on hover */
+    border-color: #5a2c91;
+    /* Card background color */
+    border-radius: 8px;
+    /* Rounded corners */
+    padding: 10px 15px;
+    /* Smaller padding */
+    color: #ffffff;
+    /* White text color */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    /* Subtle shadow for depth */
+    text-align: center;
+    border: 1px solid #6f42c1;
+    /* Purple border */
+    width: fit-content;
+
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    /* Smooth transition for hover effects */
+  }
+
+  .order-status-container:hover {
+    background-color: #495057;
+    /* Slightly lighter background on hover */
+    border-color: #5a2c91;
+    /* Darker purple border on hover */
+  }
+
+  .order-status-container h5 {
+    margin: 0;
+    font-size: 1.1em;
+  }
+
+  .order-status-container h5 strong {
+    color: #d4a5f9;
+    /* Light purple color for the status text */
+    font-size: 1.1em;
+    /* Slightly larger font size for the status */
+  }
+
+  /* Learn-more button specific styles */
+  button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+  }
+
+  button.learn-more {
+    width: 12rem;
+    height: auto;
+  }
+
+  button.learn-more:focus {
+    outline: none;
+  }
+
+  button.learn-more .circle {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: relative;
+    display: block;
+    margin: 0;
+    width: 3rem;
+    height: 3rem;
+    background: #6f42c1;
+    border-radius: 1.625rem;
+  }
+
+  button.learn-more .circle .icon {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: #fff;
+  }
+
+  button.learn-more .circle .icon.arrow {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    left: 0.625rem;
+    width: 1.125rem;
+    height: 0.125rem;
+    background: none;
+  }
+
+  button.learn-more .circle .icon.arrow::before {
+    position: absolute;
+    content: "";
+    top: -0.29rem;
+    right: 0.0625rem;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-top: 0.125rem solid #fff;
+    border-right: 0.125rem solid #fff;
+    transform: rotate(45deg);
+  }
+
+  button.learn-more .button-text {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.75rem 0;
+    margin: 0 0 0 1.85rem;
+    color: white;
+    font-weight: 700;
+    line-height: 1.6;
+    text-align: center;
+    font-size: medium;
+    padding-left: 5px;
+
+  }
+
+  button:hover .circle {
+    width: 100%;
+  }
+
+  button:hover .circle .icon.arrow {
+    background: #fff;
+    transform: translate(1rem, 0);
+  }
+
+  button:hover .button-text {
+    color: #fff;
+  }
+
+  #bottone1 {
+    color: floralwhite;
+    padding-left: 33px;
+    padding-right: 33px;
+    padding-bottom: 16px;
+    padding-top: 16px;
+    border-radius: 9px;
+    background: #7242cb;
+    border: none;
+    font-family: inherit;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.4s;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  #bottone1:hover {
+    box-shadow: 0px 4px 15px 4px #4d2d8e;
+  }
+
+  #bottone1:active {
+    transform: scale(0.97);
+    box-shadow: 0px 4px 15px 4px #3e2371;
+  }
+</style>

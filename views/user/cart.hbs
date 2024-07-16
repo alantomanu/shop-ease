@@ -1,0 +1,244 @@
+<section class="h-100 gradient-custom " style="margin-top: 100px;">
+    <div class="container py-5">
+        <div class="row d-flex justify-content-center my-4">
+            <div class="col-md-8">
+                <div class="card mb-4">
+                    <div class="card-header py-3">
+                        <h5 class="mb-0"><i class="fas fa-shopping-cart"> </i> Cart {{cartLength}} Items</h5>
+                    </div>
+                    <div class="card-body">
+                        {{#if products.length}}
+                        {{#each products}}
+                        <!-- Single item -->
+                        <div class="row ">
+
+                            <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+                                <!-- Image -->
+                                <div class="bg-image hover-overlay hover-zoom ripple rounded"
+                                    data-mdb-ripple-color="light">
+                                    <img src="/product-images/{{this.product._id}}.jpg" class="w-100" />
+                                    <a href="#!">
+                                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+                                    </a>
+                                </div>
+                                <!-- Image -->
+                            </div>
+
+                            <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+                                <!-- Data -->
+                                <p><strong>{{this.product.name}}</strong></p>
+                                <p>Category: {{this.product.category}}</p>
+                                <p>Price: <span class="currency-symbols">₹</span>
+                                    <strong>{{this.product.price}}</strong></p>
+                                <p>Description: {{this.product.description}}</p>
+
+                                <button class="combined-button"
+                                    onclick="removeFromCart('{{this._id}}', '{{this.product._id}}')"
+                                    title="Remove item">
+                                    <div class="bin-container">
+                                        <div class="bin-top-container">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 39 7"
+                                                class="bin-top">
+                                                <line stroke-width="4" stroke="white" y2="5" x2="39" y1="5"></line>
+                                                <line stroke-width="3" stroke="white" y2="1.5" x2="26.0357" y1="1.5"
+                                                    x1="12"></line>
+                                            </svg>
+                                        </div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 33 39"
+                                            class="bin-bottom">
+                                            <mask fill="white" id="path-1-inside-1_8_19">
+                                                <path
+                                                    d="M0 0H33V35C33 37.2091 31.2091 39 29 39H4C1.79086 39 0 37.2091 0 35V0Z">
+                                                </path>
+                                            </mask>
+                                            <path mask="url(#path-1-inside-1_8_19)" fill="white"
+                                                d="M0 0H33H0ZM37 35C37 39.4183 33.4183 43 29 43H4C-0.418278 43 -4 39.4183 -4 35H4H29H37ZM4 43C-0.418278 43 -4 39.4183 -4 35V0H4V35V43ZM37 0V35C37 39.4183 33.4183 43 29 43V35V0H37Z">
+                                            </path>
+                                            <path stroke-width="4" stroke="white" d="M12 6L12 29"></path>
+                                            <path stroke-width="4" stroke="white" d="M21 6V29"></path>
+                                        </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 89 80"
+                                            class="garbage">
+                                            <path fill="white"
+                                                d="M20.5 10.5L37.5 15.5L42.5 11.5L51.5 12.5L68.75 0L72 11.5L79.5 12.5H88.5L87 22L68.75 31.5L75.5066 25L86 26L87 35.5L77.5 48L70.5 49.5L80 50L77.5 71.5L63.5 58.5L53.5 68.5L65.5 70.5L45.5 73L35.5 79.5L28 67L16 63L12 51.5L0 48L16 25L22.5 17L20.5 10.5Z">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                    <span class="button__text">Remove</span>
+                                </button>
+
+
+                                <!-- Data -->
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                                <!-- Quantity -->
+                                <div class="d-flex mb-4" style="max-width: 300px">
+                                    <button class="btn btn-primary px-3 me-2"
+                                        onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',-1)">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+
+                                    <div data-mdb-input-init class="form-outline">
+                                        <span id="{{this.product._id}}" type="number" class="form-control" min="0"
+                                            name="quantity">{{this.quantity}} </span>
+                                    </div>
+
+                                    <button class="btn btn-primary px-3 ms-2"
+                                        onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',1)">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                                <!-- Quantity -->
+                            </div>
+                        </div>
+                        <hr width="100%" size="2" color="grey" class="my-5">
+                        {{/each}}
+                        {{else}}
+                        <div class="text-center my-5">
+                            <i class="fas fa-shopping-cart fa-3x mb-3"></i>
+                            <h4>Your cart is empty</h4>
+                            <p>Add items to your cart to see them here.</p>
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            {{#if products.length}}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-header py-3">
+                        <h5 class="mb-0">Summary</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                Shipping
+                                <span>Free</span>
+                            </li>
+                            <li
+                                class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                                <div>
+                                    <strong>Total amount</strong>
+                                    <strong>
+                                        <p class="mb-0">(including GST)</p>
+                                    </strong>
+                                </div>
+                                <div>₹<span id="total"><strong>{{totalAmount}}</strong></span></div>
+                            </li>
+                        </ul>
+                        <a href="/place-order">
+                            <button type="button" data-mdb-button-init data-mdb-ripple-init
+                                class="btn btn-primary btn-lg btn-block">
+                                Place Order
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</section>
+<style>
+    .combined-button {
+        --main-focus: #6f42c1;
+        --font-color: #fff;
+        --bg-color: #343a40;
+        --bg-color-sub: #5a2c8b;
+        position: relative;
+        width: 150px;
+        height: 45px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid var(--main-focus);
+        box-shadow: 4px 4px var(--main-focus);
+        background-color: var(--bg-color);
+        border-radius: 10px;
+        overflow: hidden;
+        transition: all 0.3s;
+    }
+
+    .combined-button:focus {
+        outline: none;
+    }
+
+    .combined-button .bin-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .combined-button .bin-top-container {
+        position: absolute;
+        top: -3.1px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .combined-button .button__text {
+        margin-left: 10px;
+        color: var(--font-color);
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+
+    .combined-button .bin-top,
+    .combined-button .bin-bottom,
+    .combined-button .garbage {
+        transition: all 0.3s;
+    }
+
+    .combined-button .bin-top {
+        width: 17px;
+        transform-origin: center;
+        z-index: 2;
+    }
+
+    .combined-button .bin-bottom {
+        width: 15px;
+        z-index: 2;
+    }
+
+    .combined-button .garbage {
+        position: absolute;
+        width: 14px;
+        height: auto;
+        z-index: 1;
+        opacity: 0;
+        transition: all 0.3s;
+    }
+
+    .combined-button:hover .bin-top {
+        transform: rotate(45deg);
+    }
+
+    .combined-button:hover {
+        background-color: var(--bg-color-sub);
+    }
+
+    .combined-button:hover .garbage {
+        animation: throw 0.4s linear;
+    }
+
+    .combined-button:active {
+        transform: translate(3px, 3px);
+        box-shadow: 0px 0px var(--main-focus);
+    }
+
+    @keyframes throw {
+        from {
+            transform: translate(-400%, -700%);
+            opacity: 0;
+        }
+
+        to {
+            transform: translate(0%, 0%);
+            opacity: 1;
+        }
+    }
+</style>

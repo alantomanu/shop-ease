@@ -1,0 +1,204 @@
+<section style="margin-top: 125px;">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <!-- Pills navs -->
+            <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="tab-login"  href="/login" role="tab"
+                  aria-selected="true">Login</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" id="tab-register" href="/signup" role="tab"
+                   aria-selected="false">Register</a>
+              </li>
+            </ul>
+            <!-- Pills navs -->
+
+            <!-- Pills content -->
+            <div class="tab-content">
+              <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+                <form action="/login" method="post">
+
+                  <div class="text-center mb-3">
+
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                      <i class="fab fa-facebook-f"></i>
+                    </button>
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                      <i class="fab fa-google"></i>
+                    </button>
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                      <i class="fab fa-twitter"></i>
+                    </button>
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                      <i class="fab fa-github"></i>
+                    </button>
+                  </div>
+                  <h5 class="text-center mb-3 position-relative">
+                    <span class="or-line-left"></span>
+                    <span class="bg px-3 text-muted">or</span>
+                    <span class="or-line-right"></span>
+                  </h5>
+
+
+
+                  {{#if loginerr}}
+                  <p class="error">{{loginerr}}</p>
+                  {{/if}}
+
+                  <!-- Email input -->
+                  <div class="form-outline mb-4 mt-4">
+                    <input type="email" id="loginName" name="email" class="form-control" />
+                    <label class="form-label" for="loginName">Email or username</label>
+                  </div>
+
+                  <!-- Password input -->
+                  <div class="form-outline mb-4">
+                    <input type="password" id="loginPassword" name="Password" class="form-control" />
+                    <label class="form-label" for="loginPassword">Password</label>
+                  </div>
+
+                  <!-- 2 column grid layout -->
+                  <div class="row mb-4">
+                    <div class="col-md-6 d-flex justify-content-center">
+                      <!-- Checkbox -->
+                      <div class="form-check mb-3 mb-md-0">
+                        <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
+                        <label class="form-check-label" for="loginCheck"> Remember me </label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-center">
+                      <!-- Simple link -->
+                      <a href="#!">Forgot password?</a>
+                    </div>
+                  </div>
+
+                  <!-- Submit button -->
+                  <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+                  <!-- Register buttons -->
+                  <div class="text-center">
+                    <p>Not a member? <a href="/signup">Register</a></p>
+                  </div>
+                </form>
+              </div>
+
+
+              <!-- Bootstrap JS and dependencies -->
+</section>
+<style>
+  .form-outline {
+    position: relative;
+    margin-bottom: 1.5rem; /* Add some space below the form element */
+}
+
+/* Input field styling */
+.form-outline .form-control {
+    background-color: #343a40; /* Dark background color */
+    color: #fff; /* White text color */
+    border: 1px solid #6f42c1; /* Purple border color */
+    border-radius: 0.375rem; /* Rounded corners */
+    padding: 0.75rem 1rem; /* Padding inside the input */
+    font-size: 1rem; /* Font size */
+    transition: border-color 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+}
+
+.form-outline .form-control::placeholder {
+    color: #6c757d; /* Placeholder color */
+}
+
+/* Focus state for the input field */
+.form-outline .form-control:focus {
+    border-color: #6f42c1; /* Purple border color on focus */
+    background-color: #343a40; /* Keep dark background color */
+    box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25); /* Add a subtle purple shadow */
+}
+
+/* Label styling */
+.form-outline .form-label {
+    position: absolute;
+    top: 0.75rem; /* Position above the input box */
+    left: 1rem; /* Position to the left of the input box */
+    font-size: 0.875rem; /* Font size for the label */
+    color: #6c757d; /* Light grey color for the label */
+    background-color: #343a40; /* Match the input box background */
+    padding: 0 0.25rem; /* Small padding for label */
+    transition: color 0.3s ease, transform 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+    pointer-events: none; /* Ensure label does not interfere with user interaction */
+}
+
+/* Label style for focused input */
+.form-outline .form-control:focus ~ .form-label,
+.form-outline .form-control:not(:placeholder-shown) ~ .form-label {
+    color:white; /* Purple color when the input is focused or has text */
+    transform: translateY(-1.5rem); /* Move the label up */
+    font-size: 0.75rem; /* Smaller font size */
+    border-radius: 3px;
+}
+
+/* Placeholder text styling */
+.form-outline .form-control::placeholder {
+    color: #6c757d; /* Placeholder text color */
+}
+.form-group .form-label {
+    color: #6c757d; /* Light grey color for the label */
+}
+
+.form-group .form-control {
+    background-color: #343a40; /* Dark background color */
+    color: #fff; /* White text color */
+    border: 1px solid #6f42c1; /* Purple border color */
+    border-radius: 0.375rem; /* Rounded corners */
+    padding: 0.75rem 1rem; /* Padding inside the input */
+    font-size: 1rem; /* Font size */
+}
+
+.form-group .form-control::placeholder {
+    color: #6c757d; /* Placeholder color */
+}
+
+.form-group .form-control:focus {
+    border-color: #6f42c1; /* Purple border color on focus */
+    background-color: #343a40; /* Keep dark background color */
+    box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25); /* Add a subtle purple shadow */
+}
+.form-outline .form-control {
+    background-color: #343a40; /* Dark background color */
+    color: #fff; /* White text color */
+    border: 1px solid #6f42c1; /* Purple border color */
+    border-radius: 0.375rem; /* Rounded corners */
+    padding: 0.75rem 1rem; /* Padding inside the input */
+    font-size: 1rem; /* Font size */
+    transition: border-color 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+}
+
+.form-outline .form-control::placeholder {
+    color: #6c757d; /* Placeholder color */
+}
+
+/* Focus state for the input field */
+.form-outline .form-control:focus {
+    background-color: #343a40; /* Dark background color */
+    border-color: #6f42c1; /* Purple border color on focus */
+    box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25); /* Add a subtle purple shadow */
+}
+.form-outline .form-control:active {
+    background-color: #343a40; /* Dark background color */
+    border-color: #6f42c1; /* Purple border color on focus */
+    box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25); /* Add a subtle purple shadow */
+}
+
+/* Text color and background for disabled inputs */
+.form-outline .form-control:disabled {
+    background-color: #6c757d; /* Light grey background for disabled state */
+    color: #343a40; /* Dark text color */
+}.nav-item .nav-link:hover,
+.nav-item .nav-link:focus {
+    background-color: #6f42c1; /* Purple background color */
+    color: #fff; /* Maintain white text color */
+    border-radius: 5px; /* Rounded corners */
+}
+</style>
