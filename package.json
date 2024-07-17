@@ -1,10 +1,25 @@
 {
-  "name": "shoping-cart",
-  "version": "0.0.0",
+  "name": "shopping-cart",
+  "version": "1.0.0",
   "private": true,
+  "description": "A shopping cart project using Node.js, Express, MongoDB, and Handlebars.",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon  ./bin/www"
+    "start": "nodemon ./bin/www"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alantomanu/shop-ease.git"
+  },
+  "keywords": [
+    "shopping-cart",
+    "nodejs",
+    "express",
+    "mongodb",
+    "handlebars"
+  ],
+  "author": "Alanto Manu",
+  "license": "MIT",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
@@ -29,3 +44,4 @@
     "nodemon": "^3.1.4"
   }
 }
+
