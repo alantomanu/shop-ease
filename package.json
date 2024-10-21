@@ -5,7 +5,8 @@
   "description": "A shopping cart project using Node.js, Express, MongoDB, and Handlebars.",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "build": "webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -41,7 +42,11 @@
     "razorpay": "^2.0.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.4"
+    "@babel/core": "^7.25.8",
+    "@babel/preset-env": "^7.25.8",
+    "babel-loader": "^9.2.1",
+    "nodemon": "^3.1.4",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4"
   }
 }
-
