@@ -43,6 +43,7 @@ module.exports = {
             console.error("Error in doSignup:", error);
             throw error; // Throw any error encountered during the process
         }
+        
     },
     doLogin: (userData) => {
         return new Promise(async (resolve, reject) => {
