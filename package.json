@@ -5,10 +5,10 @@
   "description": "A shopping cart project using Node.js, Express, MongoDB, and Handlebars.",
   "main": "app.js",
   "scripts": {
-  "start": "node ./bin/www",
-  "dev": "nodemon ./bin/www",
-  "build": "webpack --config webpack.config.js"
-},
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www",
+    "build": "webpack --config webpack.config.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/alantomanu/shop-ease.git"
@@ -36,6 +36,7 @@
     "express-handlebars": "^7.1.3",
     "express-session": "^1.18.0",
     "fileupload": "^0.2.1",
+    "gopd": "^1.2.0",
     "hbs": "^4.2.0",
     "http-errors": "~1.6.3",
     "mongodb": "^3.6.2",
