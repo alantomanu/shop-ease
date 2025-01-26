@@ -9,6 +9,10 @@
     "dev": "nodemon ./bin/www",
     "build": "webpack --config webpack.config.js"
   },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/alantomanu/shop-ease.git"
@@ -42,6 +46,7 @@
     "http-errors": "~1.6.3",
     "lodash": "^4.17.21",
     "mime": "^4.0.6",
+    "minimatch": "^10.0.1",
     "mongodb": "^3.7.4",
     "mongoose": "^8.4.3",
     "morgan": "~1.9.1",
