@@ -64,20 +64,19 @@ function addToCart(proId) {
         url: '/add-to-cart/' + proId,
         method: 'GET',
         success: (response) => {
-            console.log(response);  // Debugging line to see the response object
-            if (response.status) {
-                let count = $('#cart-count').html();
-                count = parseInt(count) + 1;
-                $('#cart-count').html(count);
-            } else if (response.redirect) {
+            if (response.redirect) {
                 window.location.href = response.redirect;
             } else {
-                alert("Failed to add to cart: " + response.message);
+                // Update all cart count elements regardless of response status
+                let cartCountElements = document.querySelectorAll('#cart-count');
+                cartCountElements.forEach(element => {
+                    let currentCount = parseInt(element.textContent || '0');
+                    element.textContent = currentCount + 1;
+                });
             }
         },
         error: (xhr, status, error) => {
             console.error('Error:', status, error);
-            alert("Failed to add to cart: " + error);
         }
     });
 }

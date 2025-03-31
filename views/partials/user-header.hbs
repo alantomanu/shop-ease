@@ -4,7 +4,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-2 my-auto d-none d-sm-none d-md-block d-lg-block ">
-                       <a> <h4 href="/">Shopping Cart User</h4></a>
+                       <a> <h2 href="/">Shopease</h2></a>
                     </div>
                     <div class="col-md-5 my-auto">
 
@@ -26,7 +26,7 @@
                             <!-- Cart Link -->
                             <li class="nav-item">
                                 <a class="nav-link" href="/cart">
-                                    <i class="fa fa-shopping-cart"></i> Cart (<span id="cartCount">{{cartCount}}</span>)
+                                    <i class="fa fa-shopping-cart"></i> Cart (<span id="cart-count">{{cartCount}}</span>)
                                 </a>
                             </li>
 
@@ -432,7 +432,7 @@
 </style>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const cartCountElement = document.getElementById('cartCount');
+        const cartCountElement = document.getElementById('cart-count');
         if (!cartCountElement.textContent) {
             cartCountElement.textContent = '0';
         }

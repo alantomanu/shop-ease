@@ -156,23 +156,13 @@ router.get('/cart', verifyLogin, async (req, res) => {
   }
 });
 
-router.get('/add-to-cart/:id', (req, res) => {
-  console.log("API call to add to cart");
-  const productId = req.params.id;
-  const userId = req.session.user ? req.session.user._id : null;
-
-  if (!userId) {
-    return res.json({ status: false, redirect: '/login' });
-
-  }
-
-  userHelpers.addToCart(productId, userId).then(() => {
-    res.json({ status: true });
-  }).catch((error) => {
-    console.error("Error adding to cart:", error);
-    res.status(500).json({ status: false, message: "Internal Server Error" });
-
-  });
+router.get('/add-to-cart/:id', verifyLogin, async (req, res) => {
+    try {
+        const response = await userHelpers.addToCart(req.params.id, req.session.user._id);
+        res.json({ status: true, count: response.count });
+    } catch (error) {
+        res.json({ status: false, error: error.message });
+    }
 });
 
 router.post('/change-product-quantity', (req, res, next) => {
