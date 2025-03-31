@@ -15,5 +15,10 @@ services:
         sync: false
       - key: NODE_ENV
         value: production
-    startCommand: "node ./bin/www"
-    autoDeploy: true 
+      - key: SESSION_SECRET
+        sync: false  # Added for session security
+    buildCommand: ""  # Not needed since we're using a pre-built image
+    startCommand: ""  # Not needed since it's defined in Dockerfile
+    autoDeploy: true
+    domains:
+      - shopease.onrender.com  # Optional: Add your custom domain if you have one 
