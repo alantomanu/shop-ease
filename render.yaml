@@ -5,8 +5,7 @@ services:
     region: singapore  # You can change this to your preferred region
     plan: free  # or change to paid plans like 'starter' or 'standard'
     branch: main
-    image:
-      url: docker.io/alantomanu/shopease:latest  # Added your Docker Hub image
+    image: alantomanu/shopease:latest
     numInstances: 1
     healthCheckPath: /
     envVars:
@@ -14,4 +13,7 @@ services:
         sync: false  # This means it needs to be set manually in Render dashboard
       - key: DB_NAME
         sync: false
+      - key: NODE_ENV
+        value: production
+    startCommand: "node ./bin/www"
     autoDeploy: true 
