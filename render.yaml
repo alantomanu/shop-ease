@@ -5,7 +5,8 @@ services:
     region: singapore  # You can change this to your preferred region
     plan: free  # or change to paid plans like 'starter' or 'standard'
     branch: main
-    dockerfilePath: ./Dockerfile
+    image:
+      url: docker.io/alantomanu/shopease:latest  # Added your Docker Hub image
     numInstances: 1
     healthCheckPath: /
     envVars:
