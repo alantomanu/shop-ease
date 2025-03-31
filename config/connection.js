@@ -8,31 +8,42 @@ const state = {
   db: null
 };
 
-const dbURI = process.env.MONGODB_URL;
-const dbName = process.env.DB_NAME;
-
-MongoClient.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(client => {
-        console.log('Connected to Database');
-        const db = client.db(dbName);
-        state.db = db;
-    })
-    .catch(error => {
-        console.error('Error in DB connection:', error);
-    });
-
 module.exports.connect = function (done) {
   const url = process.env.MONGODB_URL;
   const dbname = process.env.DB_NAME;
 
-  MongoClient.connect(url, { useUnifiedTopology: true }, (err, data) => {
-    if (err) return done(err);
-    state.db = data.db(dbname);
-    done();
-  });
+  if (state.db) return done(); // If already connected
+
+  MongoClient.connect(url, { 
+    useNewUrlParser: true, 
+    useUnifiedTopology: true 
+  })
+    .then(client => {
+      state.db = client.db(dbname);
+      console.log('Database connected successfully');
+      done();
+    })
+    .catch(err => {
+      console.error('Database connection error:', err);
+      done(err);
+    });
 };
 
 module.exports.get = function () {
+  if (!state.db) {
+    throw new Error('Database not initialized. Call connect() first.');
+  }
   return state.db;
+};
+
+module.exports.close = function(done) {
+  if (state.db) {
+    state.db.close()
+      .then(() => {
+        state.db = null;
+        done();
+      })
+      .catch(done);
+  }
 };
 

@@ -93,27 +93,27 @@ app.use(
 // Database connection
 db.connect((err) => {
   if (err) {
-    console.error('Error in DB connection:', err.message);
+    console.error('Error connecting to the database:', err);
+    process.exit(1); // Exit if database connection fails
   } else {
     console.log('Successfully connected to the database');
+    
+    // Only set up routes after database is connected
+    app.use('/', userRouter);
+    app.use('/admin', adminRouter);
+
+    // Error handlers
+    app.use((req, res, next) => {
+      next(createError(404));
+    });
+
+    app.use((err, req, res, next) => {
+      res.locals.message = err.message;
+      res.locals.error = req.app.get('env') === 'development' ? err : {};
+      res.status(err.status || 500);
+      res.render('error');
+    });
   }
-});
-
-// Routers
-app.use('/', userRouter);
-app.use('/admin', adminRouter);
-
-// Catch 404 and forward to error handler
-app.use((req, res, next) => {
-  next(createError(404));
-});
-
-// Error handler
-app.use((err, req, res, next) => {
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-  res.status(err.status || 500);
-  res.render('error');
 });
 
 module.exports = app;
