@@ -1,4 +1,4 @@
-{
+  {
   "name": "shopping-cart",
   "version": "1.0.0",
   "private": true,
@@ -10,8 +10,8 @@
     "build": "webpack --config webpack.config.js"
   },
   "engines": {
-    "node": ">=16.0.0",
-    "npm": ">=8.0.0"
+    "node": " 18.20.6",
+    "npm": "9.x"
   },
   "repository": {
     "type": "git",
