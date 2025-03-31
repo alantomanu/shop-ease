@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: shopease
+    env: docker
+    region: singapore  # You can change this to your preferred region
+    plan: free  # or change to paid plans like 'starter' or 'standard'
+    branch: main
+    dockerfilePath: ./Dockerfile
+    numInstances: 1
+    healthCheckPath: /
+    envVars:
+      - key: MONGODB_URL
+        sync: false  # This means it needs to be set manually in Render dashboard
+      - key: DB_NAME
+        sync: false
+      - key: PORT
+        value: 3001
+    autoDeploy: true 
