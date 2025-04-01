@@ -288,7 +288,7 @@
                                 <a href="https://www.instagram.com/_alanto_/profilecard/" target="_blank" class="social-link">
                                     <i class="fab fa-instagram"></i>
                                 </a>
-                                <a href="https://github.com/alanto-manu" target="_blank" class="social-link">
+                                <a href="https://github.com/alantomanu" target="_blank" class="social-link">
                                     <i class="fab fa-github"></i>
                                 </a>
                                 <a href="https://www.linkedin.com/in/alanto-manu-344011280?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="social-link">
@@ -461,29 +461,26 @@
 
     .social-icons {
         display: flex;
-        gap: 1rem;
-        /* Space between icons */
-        justify-content:start;
-        /* Center the icons */
-        padding: 1rem;
-        /* Padding around the icons */
+        gap: 15px;
+    }
+
+    .social-link {
+        color: white; /* Default color set to white */
+        transition: color 0.3s ease;
+    }
+
+    .social-link:hover {
+        color: #d6d6d6; /* Change to purple on hover */
+    }
+
+    .social-link:active, 
+    .social-link:focus {
+        color: #d6d6d6; /* Change to purple when clicked/focused */
     }
 
     .social-link i {
-        color: inherit;
-        /* Inherit color from parent element */
-        font-size:x-large;
-        /* Adjust the size of the icons */
-        transition: color 0.3s ease;
-        /* Smooth transition for color changes */
+        font-size: 24px; /* Adjust icon size as needed */
     }
-
-    .social-link i:hover {
-        color: #6f42c1;
-        /* Purple color on hover */
-    }
-
-
 
     .cartBtn {
         width: 150px;
