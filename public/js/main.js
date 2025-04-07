@@ -1,7 +1,7 @@
 (function ($) {
     "use strict";
     
-    // Dropdown on mouse hover
+
     $(document).ready(function () {
         function toggleNavbarMethod() {
             if ($(window).width() > 768) {
@@ -19,7 +19,7 @@
     });
     
     
-    // Back to top button
+
     $(window).scroll(function () {
         if ($(this).scrollTop() > 100) {
             $('.back-to-top').fadeIn('slow');
@@ -33,7 +33,7 @@
     });
     
     
-    // Home page slider
+
     $('.main-slider').slick({
         autoplay: true,
         dots: true,
@@ -81,7 +81,6 @@
     });
     
     
-    // Product Slider 3 Column
     $('.product-slider-3').slick({
         autoplay: true,
         infinite: true,
@@ -110,8 +109,7 @@
         ]
     });
     
-    
-    // Single Product Slider
+
     $('.product-slider-single').slick({
         infinite: true,
         dots: false,

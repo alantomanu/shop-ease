@@ -67,7 +67,6 @@ function addToCart(proId) {
             if (response.redirect) {
                 window.location.href = response.redirect;
             } else {
-                // Update all cart count elements regardless of response status
                 let cartCountElements = document.querySelectorAll('#cart-count');
                 cartCountElements.forEach(element => {
                     let currentCount = parseInt(element.textContent || '0');

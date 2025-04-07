@@ -13,35 +13,33 @@ module.exports = {
     doSignup: async (userData) => {
         try {
             console.log("User data received:", userData);
-
-            // Ensure userData.Password and userData.repeatPassword exist and are strings
             if (!userData || !userData.Password || typeof userData.Password !== 'string' ||
                 !userData.repeatPassword || typeof userData.repeatPassword !== 'string') {
                 throw new Error('Invalid password format');
             }
 
-            // Validate password format (example: min length 6)
+        
             if (userData.Password.length < 6) {
                 throw new Error('Password must be at least 6 characters long');
             }
 
-            // Ensure passwords match
+
             if (userData.Password !== userData.repeatPassword) {
                 throw new Error('Passwords do not match');
             }
 
-            // Hashing the password before saving to database
-            userData.Password = await bcrypt.hash(userData.Password, 10); // Hashing with 10 rounds of salt
-            delete userData.repeatPassword; // Remove repeatPassword from userData
 
-            // Inserting the userData into the database collection
+            userData.Password = await bcrypt.hash(userData.Password, 10); 
+            delete userData.repeatPassword; 
+
+            
             const data = await db.get().collection(collection.USER_COLLECTION).insertOne(userData);
 
-            // Resolving with the inserted document
+           
             return data.ops[0];
         } catch (error) {
             console.error("Error in doSignup:", error);
-            throw error; // Throw any error encountered during the process
+            throw error; 
         }
         
     },
@@ -267,7 +265,7 @@ module.exports = {
     placeOrder: (order, products, total) => {
         return new Promise((resolve, reject) => {
             console.log(order, products, total);
-            let status = order.paymentMethod === 'Cash on Delivery' ? 'placed' : 'pending'; // Use paymentMethod here
+            let status = order.paymentMethod === 'Cash on Delivery' ? 'placed' : 'pending'; 
             let orderObj = {
                 deliveryDetails: {
                     mobile: order.phone,
@@ -280,14 +278,14 @@ module.exports = {
                     date: new Date()
                 },
                 userId: objectId(order.userId),
-                paymentMethod: order.paymentMethod, // Ensure this key matches the one used in the route
+                paymentMethod: order.paymentMethod, 
                 products: products,
                 totalAmount: total,
                 status: status
             };
             db.get().collection(collection.ORDER_COLLECTION).insertOne(orderObj).then((response) => {
                 db.get().collection(collection.CART_COLLECTION).removeOne({ user: objectId(order.userId) });
-                resolve(response.insertedId); // Adjusted to use insertedId for MongoDB v4.x
+                resolve(response.insertedId);
             }).catch((error) => {
                 reject(error);
             });
@@ -296,7 +294,7 @@ module.exports = {
     repeatOrder: (order, products, total) => {
         return new Promise((resolve, reject) => {
             console.log(order, products, total);
-            let status = order.paymentMethod === 'Cash on Delivery' ? 'placed' : 'pending'; // Use paymentMethod here
+            let status = order.paymentMethod === 'Cash on Delivery' ? 'placed' : 'pending'; 
             let orderObj = {
                 deliveryDetails: {
                     mobile: order.phone,
@@ -309,14 +307,14 @@ module.exports = {
                     date: new Date()
                 },
                 userId: objectId(order.userId),
-                paymentMethod: order.paymentMethod, // Ensure this key matches the one used in the route
+                paymentMethod: order.paymentMethod, 
                 products: products,
                 totalAmount: total,
                 status: status
             };
             db.get().collection(collection.ORDER_COLLECTION).insertOne(orderObj).then((response) => {
               
-                resolve(response.insertedId); // Adjusted to use insertedId for MongoDB v4.x
+                resolve(response.insertedId); 
             }).catch((error) => {
                 reject(error);
             });
@@ -332,9 +330,9 @@ module.exports = {
                     return reject(new Error('Cart not found or has no products'));
                 }
 
-                resolve(cart.products);  // Resolve with cart.products which should be an array
+                resolve(cart.products);  
             } catch (error) {
-                reject(error);  // Pass errors to the catch block of the calling function
+                reject(error); 
             }
         });
     }
@@ -401,33 +399,33 @@ module.exports = {
     getUserOrders: (userId) => {
         return new Promise(async (resolve, reject) => {
             try {
-                // Fetch orders for the given user and sort them by date in descending order
+                
                 let orders = await db.get().collection(collection.ORDER_COLLECTION)
                     .find({ userId: new objectId(userId) })
-                    .sort({ date: -1 }) // Sort by date in descending order
+                    .sort({ date: -1 }) 
                     
                     .toArray();
                 
-                console.log('Fetched Orders:', orders); // Debug log
+                console.log('Fetched Orders:', orders); 
                 
-                // Extract product IDs from each order's products array
+                
                 orders = orders.map(order => {
                     return {
                         ...order,
                         products: order.products.map(product => ({
-                            productId: product.item, // Assuming 'item' is the product ID
+                            productId: product.item, 
                             quantity: product.quantity
                         }))
                     };
                 });
                 
     
-                // Log the orders with product IDs for debugging
-                console.log('Orders with Product IDs:', orders); // Debug log
+               
+                console.log('Orders with Product IDs:', orders); 
     
                 resolve(orders);
             } catch (error) {
-                console.error('Error fetching orders:', error); // Log the error
+                console.error('Error fetching orders:', error); 
                 reject(error);
             }
         });
@@ -543,7 +541,7 @@ module.exports = {
                     {
                       $inc: { 'products.$.quantity': 1 }
                     }).then(() => {
-                    // do nothing
+                 
                   })
               } else {
                 db.get().collection(collection.CART_COLLECTION)
@@ -552,7 +550,7 @@ module.exports = {
                       $push: { products: proObj }
                     }
                   ).then((response) => {
-                    // do nothing
+               
                   })
               }
             })
@@ -589,7 +587,7 @@ module.exports = {
       getOrderProductList: (orderId) => {
         return new Promise(async (resolve, reject) => {
           try {
-            // Find the order by ID and get the products array
+            
             const orderDetails = await db.get().collection(collection.ORDER_COLLECTION).findOne({ _id: objectId(orderId) });
             if (orderDetails) {
               resolve(orderDetails.products);
@@ -605,7 +603,7 @@ module.exports = {
       getTotalAmountOfOrder: (orderId) => {
         return new Promise(async (resolve, reject) => {
           try {
-            // Find the order by ID and get the total amount
+            
             const orderDetails = await db.get().collection(collection.ORDER_COLLECTION).findOne({ _id: objectId(orderId) });
             if (orderDetails) {
               resolve(orderDetails.totalAmount);
@@ -638,8 +636,8 @@ module.exports = {
           try {
             let recentproducts = await db.get().collection(collection.PRODUCT_COLLECTION)
               .find()
-              .sort({ createdAt: -1 }) // Sort by createdAt in descending order
-              .limit(5) // Limit to 5 documents
+              .sort({ createdAt: -1 }) 
+              .limit(5) 
               .toArray();
             resolve(recentproducts);
           } catch (error) {

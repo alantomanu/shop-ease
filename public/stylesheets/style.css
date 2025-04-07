@@ -1,5 +1,4 @@
-/* Reset default body styles */
-/* Global styles */
+
 * {
   margin: 0;
   padding: 0;
@@ -10,8 +9,8 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #343a40; /* Dark background color */
-  color: #ffffff; /* Text color for light backgrounds */
+  background-color: #343a40; 
+  color: #ffffff; 
 
 .loader {
   position: relative;
@@ -68,96 +67,91 @@ body {
   }
 }
 
-/* Navbar styles */
-/* Navbar styles */
+
+
 .navbar {
   padding: 0.5rem 1rem;
 }
 
 .navbar-brand {
-  font-size: 1.5rem; /* Larger font size for brand */
-}
+  font-size: 1.5rem; 
 
 
 
-/* Navbar link styles */
 .navbar-nav .nav-link {
-  font-size: 1.2rem; /* Increase font size */
-  transition: color 0.3s ease-in-out, font-size 0.3s ease-in-out; /* Smooth color and size transition */
+  font-size: 1.2rem; 
+  transition: color 0.3s ease-in-out, font-size 0.3s ease-in-out; 
 }
 
 .navbar-nav .nav-link:hover {
-  color: #6f42c1; /* Change color on hover */
+  color: #6f42c1;
   
 }
 .navbar-toggler:focus {
-  box-shadow: none; /* Remove the focus box shadow */
-  outline: none; /* Remove the focus outline */
+  box-shadow: none; 
+  outline: none; 
 }
-/* Navbar collapse styles */
+
 .navbar-collapse {
-  justify-content: flex-end; /* Right-align navbar items */
+  justify-content: flex-end; 
 }
 
 
 
 
 
-/* Form styles */
+
 .form-inline .form-control {
-  background-color: #454d55; /* Dark input background */
-  border-color: #6c757d; /* Grey border color */
+  background-color: #454d55;
+  border-color: #6c757d; 
 }
 
 .form-inline .form-control:focus {
-  border-color: #fff; /* White border color on focus */
+  border-color: #fff; 
 }
 
 .form-inline .btn-outline-success {
-  color: #fff; /* White text color for search button */
-  border-color: #28a745; /* Green border color for search button */
+  color: #fff; 
+  border-color: #28a745; 
 }
 
 .form-inline .btn-outline-success:hover {
-  color: #28a745; /* Green text color on hover */
-  background-color: rgba(255, 255, 255, 0.15); /* Lighter background on hover */
+  color: #28a745;
+  background-color: rgba(255, 255, 255, 0.15); 
 }
 
-/* Button styles */
+
 .btn-secondary {
-  background-color: #6f42c1; /* Purple background color for dropdown toggle */
-  border-color: #6f42c1; /* Purple border color for dropdown toggle */
-}.text-secondary{
+  background-color: #6f42c1; 
+  border-color: #6f42c1; 
   color: #6f42c1;
 }
 
 .btn-secondary:hover {
-  background-color: #7952b3; /* Darker purple on hover */
-  border-color: #7952b3; /* Darker purple border on hover */
+  background-color: #7952b3; 
+  border-color: #7952b3; 
 }
 
 .btn-secondary:focus,
 .btn-secondary.focus {
-  box-shadow: 0 0 0 0.2rem rgba(135, 86, 231, 0.5); /* Purple shadow on focus */
-}
+  box-shadow: 0 0 0 0.2rem rgba(135, 86, 231, 0.5); 
 
-/* Center content within a container */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 1rem;
 }
 
-/* Cards styles */
+
 .card {
-  background-color: #454d55; /* Darker card background */
+  background-color: #454d55; 
   border: none;
   border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Darker shadow */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); 
   padding: 20px;
 }
 
-/* Image wrapper styles */
+
 .card-img-top-wrapper {
   height: 12rem;
   display: flex;
@@ -165,7 +159,7 @@ body {
   align-items: center;
   overflow: hidden;
   background-color: #454d55; 
-  border-radius: 5px; /* Darker background */
+  border-radius: 5px; 
 }
 
 /* Image styles */
@@ -176,7 +170,7 @@ body {
   border-radius: 5px;
 }
 
-/* Card body styles */
+
 .card-body {
   flex: 1 1 auto;
   padding: 1rem;
@@ -1198,12 +1192,11 @@ h6 {
 
 @media (max-width: 768px) {
   .product-slider .product-item {
-    height: 100%;  /* Fixed height for small screens */
+    height: 100%; 
   }
   
   .product-slider .product-item .product-image {
-    height: 300px;  /* Same height as larger screens */
-  }
+    height: 300px;  
 }
 }
 
@@ -1212,9 +1205,7 @@ h6 {
 
 
 
-/**********************************/
-/******** Featured Product ********/
-/**********************************/
+
 .featured-product {
   position: relative;
   padding: 45px 0 60px 0;
@@ -1229,9 +1220,7 @@ h6 {
 
 
 
-/**********************************/
-/********** Sidebar CSS ***********/
-/**********************************/
+
 .sidebar-widget {
   position: relative;
   width: 100%;
@@ -1347,9 +1336,6 @@ h6 {
 
 
 
-/**********************************/
-/************ Cart CSS ************/
-/**********************************/
 .cart-page {
   position: relative;
   padding: 60px 0;
@@ -1483,9 +1469,7 @@ h6 {
 
 
 
-/**********************************/
-/********** Checkout CSS **********/
-/**********************************/
+
 .checkout {
   position: relative;
   padding: 60px 0;
@@ -1585,9 +1569,7 @@ h6 {
 
 
 
-/**********************************/
-/********* My Account CSS *********/
-/**********************************/
+
 .my-account {
   position: relative;
   padding: 60px 0;
@@ -1654,11 +1636,6 @@ h6 {
 
 
 
-
-
-/**********************************/
-/*********** Brand CSS ************/
-/**********************************/
 .brand {
   position: relative;
   padding: 0 0 60px 0;
@@ -1676,10 +1653,6 @@ h6 {
 }
 
 
-
-/**********************************/
-/********** Contact CSS ***********/
-/**********************************/
 .contact {
   position: relative;
   padding: 60px 0;
@@ -1745,9 +1718,7 @@ h6 {
 
 
 
-/**********************************/
-/****** Register & Login CSS ******/
-/**********************************/
+
 /* Slider Arrow Styles */
 .slick-prev,
 .slick-next {
@@ -1757,18 +1728,18 @@ h6 {
   opacity: 0;
   transition: 0.5s;
   background: #ffffff;
-  border-radius: 50%; /* Rounded buttons */
+  border-radius: 50%; //
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .slick-prev {
-  left: 15px; /* Adjust for smaller screens */
+  left: 15px; 
 }
 
 .slick-next {
-  right: 15px; /* Adjust for smaller screens */
+  right: 15px;
 }
 
 .slick-slider:hover .slick-prev,
@@ -1793,11 +1764,11 @@ h6 {
 }
 
 .slick-prev::before {
-  content: "\f104"; /* FontAwesome left arrow */
+  content: "\f104"; 
 }
 
 .slick-next::before {
-  content: "\f105"; /* FontAwesome right arrow */
+  content: "\f105"; 
 }
 
 .slick-dots li button:before {
@@ -1816,7 +1787,7 @@ h6 {
 .home-slider {
   position: relative;
   width: 100%;
-  overflow: hidden; /* Prevent horizontal overflow */
+  overflow: hidden; 
 }
 
 .home-slider .main-slider-item {

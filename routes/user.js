@@ -4,7 +4,7 @@ var productHelpers = require('../helpers/product-helpers.js');
 var userHelpers = require('../helpers/user-helpers.js');
 const Razorpay = require('razorpay');
 
-/* GET home page. */
+
 const verifyLogin=(req,res,next)=>{
   if(req.session.userloggedIn){
     next()
@@ -16,7 +16,7 @@ const verifyLogin=(req,res,next)=>{
     let user = req.session.user;
     console.log(user);
     let cartCount = null;
-    let categories = await productHelpers.getAllCategories(); // Fetch categories
+    let categories = await productHelpers.getAllCategories(); 
 
     if (req.session.user) {
         cartCount = await userHelpers.getCartCount(req.session.user._id);
@@ -25,10 +25,10 @@ const verifyLogin=(req,res,next)=>{
     try {
         let products = await productHelpers.getAllProducts();
         let recentProducts = await userHelpers.getRecentProducts();
-        res.render('user/home', { products, recentProducts, user, cartCount, categories, admin: false }); // Pass categories to the template
+        res.render('user/home', { products, recentProducts, user, cartCount, categories, admin: false }); 
     } catch (error) {
         console.error('Failed to fetch products:', error);
-        res.render('user/home', { products: [], recentProducts: [], user, cartCount, categories: [], admin: false }); // Handle error case
+        res.render('user/home', { products: [], recentProducts: [], user, cartCount, categories: [], admin: false }); 
     }
 });
 
@@ -40,11 +40,11 @@ router.get('/products', async function (req, res, next) {
       cartCount = await userHelpers.getCartCount(req.session.user._id);
   }
 
-  // Get the category from the query parameters
+
   let category = req.query.category;
 
   try {
-      // Fetch products filtered by the category
+
       let products = await productHelpers.getAllProducts(category);
       res.render('user/view-products', { products, user, cartCount,categories, admin: false });
   } catch (error) {
@@ -52,7 +52,7 @@ router.get('/products', async function (req, res, next) {
       res.render('user/view-products', { products: [], user,categories: [], cartCount, admin: false });
   }
 });
-// Route for search suggestions
+
 router.get('/search/suggestions', async (req, res) => {
   try {
     const query = req.query.query || '';
@@ -75,8 +75,6 @@ router.get('/search', async (req, res) => {
     if (req.session.user) {
       cartCount = await userHelpers.getCartCount(req.session.user._id);
     }
-
-    // Pass the noResults flag to the template if no products are found
     const noResults = products.length === 0;
 
     res.render('user/search-results', { products, query, user, cartCount, categories, admin: false, noResults });
@@ -200,7 +198,7 @@ router.get('/place-order', verifyLogin, async (req, res) => {
       }
 
 
-      // Merge product totals with products array
+
       products = products.map(product => {
           let productTotal = productTotals.find(pt => pt.item.equals(product.item));
           if (productTotal) {
@@ -228,15 +226,14 @@ router.post('/place-order', async (req, res) => {
       let products = await userHelpers.getCartProductList(req.body.userId);
       let totalPrice = await userHelpers.getTotalAmount(req.body.userId);
 
-      // Check if there are no products in the cart
+
       if (!products || products.length === 0) {
           return res.status(400).json({ status: false, message: "No products in the cart" });
       }
 
-      // Place the order and handle the payment method
       userHelpers.placeOrder(req.body, products, totalPrice)
           .then((orderId) => {
-              if (req.body.paymentMethod === 'Cash on Delivery') { // Use paymentMethod for consistency
+              if (req.body.paymentMethod === 'Cash on Delivery') { 
                   res.json({ codSuccess: true });
               } else {
                   userHelpers.generateRazorpay(orderId, totalPrice)
@@ -280,15 +277,15 @@ router.get('/orders', verifyLogin, async (req, res) => {
   let orders;
 
   try {
-      // Fetch user orders with the appropriate sort option
+     
       let categories = await productHelpers.getAllCategories();
       orders = await userHelpers.getUserOrders(req.session.user._id,);
       let cartCount=await userHelpers.getCartCount(req.session.user._id)
 
-      // Render the orders page, passing the sort option and orders to the view
+      
       res.render('user/orders', { user: req.session.user, orders, helpers,cartCount ,categories});
   } catch (error) {
-      res.status(500).send(error.message);  // Send the error message in case of failure
+      res.status(500).send(error.message);  
   }
 });
 

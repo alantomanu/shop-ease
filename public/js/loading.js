@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
       loadingSpinner.style.display = 'none';
     }
   
-    // Example of showing the spinner during AJAX calls (if using jQuery)
+   
     $(document).ajaxStart(function () {
       showLoadingSpinner();
     });
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
       hideLoadingSpinner();
     });
   
-    // Example of showing the spinner during page load (if not using AJAX)
+  
     window.addEventListener('load', function () {
       hideLoadingSpinner();
     });

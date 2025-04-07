@@ -1,7 +1,7 @@
 const MongoClient = require('mongodb').MongoClient;
 const dotenv = require('dotenv');
 
-// Load environment variables from .env file
+
 dotenv.config();
 
 const state = {
@@ -12,7 +12,7 @@ module.exports.connect = function (done) {
   const url = process.env.MONGODB_URL;
   const dbname = process.env.DB_NAME;
 
-  if (state.db) return done(); // If already connected
+  if (state.db) return done(); 
 
   MongoClient.connect(url, { 
     useNewUrlParser: true, 

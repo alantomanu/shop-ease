@@ -3,13 +3,13 @@ var router = express.Router();
 var productHelpers = require('../helpers/product-helpers.js');
 var userHelpers = require('../helpers/user-helpers.js');
 
-// Set up a basic admin username and password
+
 const adminCredentials = {
-  username: 'Thecreator',  // Set your admin username
-  password: 'fi^D!t|fu<@|'  // Set your admin password
+  username: 'Thecreator',  
+  password: 'fi^D!t|fu<@|'  
 };
 
-// Middleware to check if the admin is logged in
+
 const verifyLogin = (req, res, next) => {
   if (req.session.admin) {
     next();
@@ -18,12 +18,12 @@ const verifyLogin = (req, res, next) => {
   }
 };
 
-// Admin login page
+
 router.get('/login', (req, res) => {
   res.render('admin/login', {admin: true});
 });
 
-// Handle admin login
+
 router.post('/login', (req, res) => {
   const { username, password } = req.body;
 
@@ -35,7 +35,7 @@ router.post('/login', (req, res) => {
   }
 });
 
-// Admin dashboard
+
 router.get('/', verifyLogin, (req, res) => {
   productHelpers.getAllProducts().then((products) => {
     res.render('admin/view-products', { admin: true, products, helpers });
@@ -44,12 +44,12 @@ router.get('/', verifyLogin, (req, res) => {
   });
 });
 
-// Add product page
+
 router.get('/add-product', verifyLogin, (req, res) => {
   res.render('admin/add-product', {admin: true});
 });
 
-// Add product handling
+
 router.post('/add-product', verifyLogin, (req, res) => {
   productHelpers.addProduct(req.body, (id) => {
     let image = req.files.image;
@@ -63,7 +63,7 @@ router.post('/add-product', verifyLogin, (req, res) => {
   });
 });
 
-// Delete product
+
 router.get('/delete-product/', verifyLogin, (req, res) => {
   let prodId = req.query.id;
   productHelpers.deleteProduct(prodId).then(() => {
@@ -71,13 +71,13 @@ router.get('/delete-product/', verifyLogin, (req, res) => {
   });
 });
 
-// Edit product page
+
 router.get('/edit-product/', verifyLogin, async (req, res) => {
   let product = await productHelpers.getProductDetails(req.query.id);
   res.render('admin/edit-product', {admin: true, product});
 });
 
-// Handle product update
+
 router.post('/edit-product/', verifyLogin, (req, res) => {
   let id = req.query.id;
   console.log("id=" + id);
@@ -101,7 +101,7 @@ router.post('/edit-product/', verifyLogin, (req, res) => {
 });
 
 
-// View all orders
+
 router.get('/all-orders', verifyLogin, async (req, res) => {
   try {
     let orders = await productHelpers.getAllOrderProducts();
@@ -112,7 +112,7 @@ router.get('/all-orders', verifyLogin, async (req, res) => {
   }
 });
 
-// Update order status
+
 router.post('/update-order-status', verifyLogin, (req, res) => {
   const { id, status } = req.body;
   productHelpers.updateOrderStatus(id, status)
@@ -123,7 +123,7 @@ router.post('/update-order-status', verifyLogin, (req, res) => {
     });
 });
 
-// View all users
+
 router.get('/all-users', verifyLogin, async (req, res) => {
   try {
     const users = await productHelpers.getAllUsers();
@@ -134,7 +134,7 @@ router.get('/all-users', verifyLogin, async (req, res) => {
   }
 });
 
-// Admin logout
+
 router.get('/logout', (req, res) => {
   req.session.admin = null;
   res.redirect('/admin/login');

@@ -4,14 +4,14 @@ var objectId=require('mongodb').ObjectId
 const { response } = require('../app');
 module.exports = {
     addProduct: (product, callback) => {
-      product.createdAt = new Date(); // Add createdAt field
+      product.createdAt = new Date(); 
         db.get().collection('product').insertOne(product).then((data) => {
 
-            callback(data.ops[0]._id)// Return the inserted product ID
+            callback(data.ops[0]._id)
         })
             .catch(err => {
                 console.error('Error inserting product:', err);
-                callback(false); // Handle error, possibly inform callback about failure
+                callback(false); 
             });
     },
      getAllProducts:(category) => {
@@ -91,7 +91,7 @@ module.exports = {
     deleteProduct:(prodId)=>{
         return new Promise((resolve,reject)=>{
          db.get().collection(collection.PRODUCT_COLLECTION).removeOne({_id:objectId(prodId)}).then((response)=>{
-           // console.log(response);
+           
             resolve(response)
          }) 
         })
@@ -157,7 +157,7 @@ module.exports = {
                   products: { $push: { item: '$products.item', quantity: '$products.quantity', productName: '$productDetails.name' } }
                 }
               },
-              { $sort: { date: -1 } } // Sort by date in descending order
+              { $sort: { date: -1 } } 
             ]).toArray();
             resolve(orders);
           } catch (error) {
@@ -177,7 +177,7 @@ module.exports = {
       },
       getAllUsers:() => {
         return new Promise((resolve, reject) => {
-            db.get().collection(collection.USER_COLLECTION) // Ensure you have the correct collection name for users
+            db.get().collection(collection.USER_COLLECTION) 
                 .find({}, { projection: { _id: 1, name: 1, email: 1 } })
                 .toArray()
                 .then(users => resolve(users))
