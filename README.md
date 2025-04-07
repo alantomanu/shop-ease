@@ -89,19 +89,19 @@ Welcome to **ShopEase**, a feature-rich eCommerce platform built with Node.js, M
 
 ### 🏠 Homepage
 
-<img src="https://github.com/user-attachments/assets/11742e3a-1a66-4350-a2b1-f43cf9803b47" alt="Homepage" width="700"/>
+<img src="https://github.com/user-attachments/assets/11742e3a-1a66-4350-a2b1-f43cf9803b47" alt="Homepage" width="800"/>
 
 ### 🛒 Product Listing
-<img src="https://github.com/user-attachments/assets/f9f3cd81-c162-4f3a-887f-82f55771e3cc" alt="Product Listing" width="700"/>
+<img src="https://github.com/user-attachments/assets/f9f3cd81-c162-4f3a-887f-82f55771e3cc" alt="Product Listing" width="800"/>
 
 ### 📦 Cart & Checkout  
-<img src="https://github.com/user-attachments/assets/63a53f6d-3c25-4b19-b38d-0f5bf7738754" width="700"/>
-<img src="https://github.com/user-attachments/assets/ad8e6d11-3664-447b-aff3-056fd5ef034c" width="700"/>
-<img src="https://github.com/user-attachments/assets/3b893db0-80e8-47c9-9ee3-577dfd6ca43c" width="700"/>
+<img src="https://github.com/user-attachments/assets/63a53f6d-3c25-4b19-b38d-0f5bf7738754" width="800"/>
+<img src="https://github.com/user-attachments/assets/ad8e6d11-3664-447b-aff3-056fd5ef034c" width="800"/>
+<img src="https://github.com/user-attachments/assets/3b893db0-80e8-47c9-9ee3-577dfd6ca43c" width="800"/>
 
 ### 🛠 Admin Dashboard  
-<img src="https://github.com/user-attachments/assets/90d9bee1-7edf-4496-8c85-13dae14b3e2d" width="700"/>
-<img src="https://github.com/user-attachments/assets/4661dcd9-3cbd-4643-a3b3-55de285d65c4" width="700"/>
+<img src="https://github.com/user-attachments/assets/90d9bee1-7edf-4496-8c85-13dae14b3e2d" width="800"/>
+<img src="https://github.com/user-attachments/assets/4661dcd9-3cbd-4643-a3b3-55de285d65c4" width="800"/>
 
 
 ---
