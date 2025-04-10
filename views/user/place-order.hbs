@@ -250,20 +250,19 @@
             </div>
 
         </div>
-        <!-- end row -->
+       
 
     </div>
 
 </section>
 
 <script>
-    // Handle form submission
     $("#checkout-form").submit((e) => {
         e.preventDefault();
         $.ajax({
             url: '/place-order',
             method: 'post',
-            data: $('#checkout-form').serialize(), // Serialize form data
+            data: $('#checkout-form').serialize(), 
             success: (response) => {
                 console.log("Order placed response:", response);
                 if (response.codSuccess) {
@@ -279,7 +278,6 @@
         });
     });
 
-    // Function to initiate Razorpay payment
     function razorpayPayment(order) {
         var options = {
             "key": "rzp_test_qyirRzk9B6hlNz", // Enter the Key ID generated from the Dashboard

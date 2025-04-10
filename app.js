@@ -13,7 +13,6 @@ var db = require('./config/connection');
 var fileUpload = require('express-fileupload');
 var session = require('express-session');
 
-// Register Handlebars helpers
 Handlebars.registerHelper('multiply', function (price, quantity) {
   const numPrice = parseFloat(price.replace(/,/g, ''));
   const numQuantity = parseInt(quantity, 10);
@@ -60,7 +59,6 @@ Handlebars.registerHelper('json', function (context) {
   return JSON.stringify(context);
 });
 
-// Configure view engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.engine('hbs', hbs.engine({
@@ -74,7 +72,6 @@ app.engine('hbs', hbs.engine({
   helpers: Handlebars.helpers,
 }));
 
-// Middleware
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -83,26 +80,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload());
 app.use(
   session({
-    secret: 'your-secret-key', // Replace with a secure key
+    secret: 'your-secret-key',
     resave: false,
     saveUninitialized: false,
     cookie: { maxAge: 6000000 },
   })
 );
 
-// Database connection
 db.connect((err) => {
   if (err) {
     console.error('Error connecting to the database:', err);
-    process.exit(1); // Exit if database connection fails
+    process.exit(1);
   } else {
     console.log('Successfully connected to the database');
     
-    // Only set up routes after database is connected
     app.use('/', userRouter);
     app.use('/admin', adminRouter);
 
-    // Error handlers
     app.use((req, res, next) => {
       next(createError(404));
     });

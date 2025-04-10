@@ -1,4 +1,3 @@
-
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +10,7 @@ body {
   padding: 0;
   background-color: #343a40; 
   color: #ffffff; 
-
+}
 .loader {
   position: relative;
   width: 33px;
@@ -67,16 +66,13 @@ body {
   }
 }
 
-
-
 .navbar {
   padding: 0.5rem 1rem;
 }
 
 .navbar-brand {
   font-size: 1.5rem; 
-
-
+}
 
 .navbar-nav .nav-link {
   font-size: 1.2rem; 
@@ -95,11 +91,6 @@ body {
 .navbar-collapse {
   justify-content: flex-end; 
 }
-
-
-
-
-
 
 .form-inline .form-control {
   background-color: #454d55;
@@ -120,13 +111,14 @@ body {
   background-color: rgba(255, 255, 255, 0.15); 
 }
 
-
 .btn-secondary {
   background-color: #6f42c1; 
-  border-color: #6f42c1; 
-  color: #6f42c1;
+  border-color: #6f42c1;
 }
-
+.text-secondary{
+    color: #6f42c1;
+} 
+ 
 .btn-secondary:hover {
   background-color: #7952b3; 
   border-color: #7952b3; 
@@ -135,13 +127,12 @@ body {
 .btn-secondary:focus,
 .btn-secondary.focus {
   box-shadow: 0 0 0 0.2rem rgba(135, 86, 231, 0.5); 
-
+}
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 1rem;
 }
-
 
 .card {
   background-color: #454d55; 
@@ -150,7 +141,6 @@ body {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); 
   padding: 20px;
 }
-
 
 .card-img-top-wrapper {
   height: 12rem;
@@ -162,14 +152,12 @@ body {
   border-radius: 5px; 
 }
 
-/* Image styles */
 .card-img-top {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
   border-radius: 5px;
 }
-
 
 .card-body {
   flex: 1 1 auto;
@@ -179,24 +167,21 @@ body {
   border-radius: 5px;
 }
 
-/* Card title styles */
 .card-title {
   font-size: 1.25rem;
   margin-bottom: 0.75rem;
 }
 
-/* Card text styles */
 .card-text {
   flex: 1;
   font-size: 0.875rem;
-  color: #adb5bd; /* Lighter text color */
+  color: #adb5bd;
 }
 
-/* Primary button styles */
 .btn-primary {
   width: 100%;
   height: 100%;
-  background-color: #6f42c1; /* Purple color */
+  background-color: #6f42c1; 
   border: none;
 }
 .btn-primary:active {
@@ -206,54 +191,42 @@ body {
 
 .btn-primary:hover {
  background-color: #5a2b9c;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Darker purple on hover */
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
 }
 
-/* Form styles */
-
-
-
-/* Link button styles */
 .btn-link {
-  color: #6f42c1; /* Purple link color */
+  color: #6f42c1;
 }
 .btn-links {
-  color: #945cfa; /* Purple link color */
+  color: #945cfa;
 }
 
 .btn-link:hover {
-  color: #7952b3; /* Darker purple on hover */
+  color: #7952b3; 
 }
 
-/* Centered link styles */
 .text-center a {
   color: #ffffffdb;
 }
 
-
-
-
-/* Nav pill styles */
 .nav-pills .nav-link {
-  color: #adb5bd; /* Lighter text color */
+  color: #adb5bd; 
 }
 
 .nav-pills .nav-link.active {
-  background-color: #6f42c1; /* Purple active background */
+  background-color: #6f42c1; 
   color: #fff;
 }
 
-
-/* Spinner styles */
 .loading-spinner {
-  display: none; /* Hidden by default */
+  display: none; 
   position: fixed;
   z-index: 9999;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Dark overlay */
+  background-color: rgba(0, 0, 0, 0.7); 
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -262,7 +235,7 @@ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Darker purple on hover */
 .spinner {
   border: 16px solid #f3f3f3;
   border-radius: 50%;
-  border-top: 16px solid #6f42c1; /* Purple spinner color */
+  border-top: 16px solid #6f42c1;
   width: 120px;
   height: 120px;
   animation: spin 2s linear infinite;
@@ -279,9 +252,9 @@ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Darker purple on hover */
 .or-line-left, .or-line-right {
   position: absolute;
   top: 50%;
-  width: calc(50% - 40px); /* Adjust the width as needed */
+  width: calc(50% - 40px); 
   height: 1px;
-  background-color: #a4a4a4; /* Grey color */
+  background-color: #a4a4a4; 
 }
 
 .or-line-left {
@@ -293,49 +266,51 @@ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Darker purple on hover */
 }
 
 .form-control {
-  background-color: #333; /* Dark background color */
-  color: #fff; /* White text color */
-  border: 1px solid #555; /* Dark border color */
+  background-color: #333; 
+  color: #fff;
+  border: 1px solid #555; 
 }
 
 .form-control:focus {
-  background-color: #444; /* Slightly lighter background color on focus */
-  color: #fff; /* White text color */
-  border: 1px solid #777; /* Slightly lighter border color on focus */
-  box-shadow: none; /* Remove default focus shadow */
+  background-color: #444; 
+  color: #fff;
+  border: 1px solid #777;
+  box-shadow: none;
 }
 
 .list-group-item {
-  color: white; /* Set text color to white */
-  background-color: #4a4f54bd; /* Set background color to black */
+  color: white;
+  background-color: #4a4f54bd;
 }
 
 .list-group-item span, 
 .list-group-item strong, 
 .list-group-item p {
-  color: white; /* Ensure all text elements are white */
+  color: white;
 }
 
 .list-group-item .mb-0 {
-  color: gray; /* Set VAT text to a slightly different color for distinction */
-}  .price-container {
-  border-top: 1px solid #ddd; /* Add a border on top to separate price from description */
-  padding-top: 10px; /* Space between description and price */
+  color: gray;
+}
+
+.price-container {
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
 }
 
 .price {
-  font-size: 1.1rem; /* Increase font size for the price */
-  font-weight:bold /* Make the price bold */
+  font-size: 1.1rem;
+  font-weight:bold
 }
 
 .currency-symbol {
   font-size: 1.5rem;
-  color: #dbe0e5; /* Larger rupee symbol */
+  color: #dbe0e5;
 }
 
 .price-value {
-  font-size: 1.5rem; /* Increase font size for the price */
-  color: #dbe0e5; /* Primary color for the price */
+  font-size: 1.5rem;
+  color: #dbe0e5;
 }
 
 /* Card */
@@ -449,8 +424,6 @@ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Darker purple on hover */
 }
 
 /* Card radio */
-
-
 .card-radio {
   background-color: #3a3a3c;
   border: 2px solid #3a3a3c;
@@ -468,12 +441,9 @@ box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Darker purple on hover */
   
 }
 
-
-
 .card-radio:hover {
   cursor: pointer;
 }
-
 
 .card-radio-input {
   display: none;
@@ -501,8 +471,6 @@ a {
   color: #1e90ff;
 }
 
-
-
 /* Edit button */
 .edit-btn {
   width: 35px;
@@ -527,8 +495,6 @@ a {
   padding: 1px 22px;
   background-color: #3b76e1;
 }
-
-
 
 /* Additional styling */
 .font-size-14 {
@@ -560,7 +526,6 @@ a {
     border-top: 1px solid #dee2e6;
 }
 
-
 .btn-purple {
   background-color: #6f42c1;
   color: #ffffff;
@@ -579,10 +544,6 @@ a {
 .btn-filter:hover {
   background-color: #5a34a6;
 }
-
-
-
-
 
 .table {
   color: #ffffff;
@@ -709,7 +670,6 @@ a {
 /********** General CSS ***********/
 /**********************************/
 
-
 a {
   color: rgba(255, 255, 255, 0.888) ;
   transition: 0.5s;
@@ -761,8 +721,6 @@ h6 {
   color: #ffffff;
 }
 
-
-
 /**********************************/
 /********* Form Input CSS *********/
 /**********************************/
@@ -780,12 +738,6 @@ h6 {
 .custom-checkbox {
   margin-bottom: 15px;
 }
-
-
-
-
-
-
 
 /**********************************/
 /********* Top Header CSS *********/
@@ -838,7 +790,6 @@ h6 {
   text-align: right;
 }
 
-
 .top-header .user .cart {
   display: inline-block;
 }
@@ -872,8 +823,6 @@ h6 {
   }
 }
 
-
-
 /**********************************/
 /********* Header Nav CSS *********/
 /**********************************/
@@ -885,8 +834,6 @@ h6 {
   height: 100%;
   padding: 0;
 }
-
-
 
 @media (min-width: 768px) {
   .header,
@@ -905,15 +852,9 @@ h6 {
   }
 }
 
-
-
-
-
 /**********************************/
 /********* Header Slider **********/
 /**********************************/
-
-
 
 /**********************************/
 /********* Breadcrumb CSS *********/
@@ -929,8 +870,6 @@ h6 {
   padding: 0;
   background: none;
 }
-
-
 
 /**********************************/
 /********** Category CSS **********/
@@ -999,8 +938,6 @@ h6 {
   margin: 0;       
 }
 
-
-
 /**********************************/
 /******* Section Header CSS *******/
 /**********************************/
@@ -1037,8 +974,6 @@ h6 {
   text-align: center;
   margin: 0
 }
-
-
 
 /**********************************/
 /*********** Feature CSS **********/
@@ -1085,8 +1020,6 @@ h6 {
   font-size: 15px;
   margin: 0;
 }
-
-
 
 /**********************************/
 /******** Product Item CSS ********/
@@ -1181,7 +1114,6 @@ h6 {
   margin-top: 5px;
 }
 
-
 .product-slider .cartBtn:hover {
   background-color: #5a359b;
 }
@@ -1200,12 +1132,6 @@ h6 {
 }
 }
 
-
-
-
-
-
-
 .featured-product {
   position: relative;
   padding: 45px 0 60px 0;
@@ -1216,10 +1142,6 @@ h6 {
   position: relative;
   padding: 60px 0;
 }
-
-
-
-
 
 .sidebar-widget {
   position: relative;
@@ -1333,8 +1255,6 @@ h6 {
   color: #ffffff;
   background: #3F69AA;
 }
-
-
 
 .cart-page {
   position: relative;
@@ -1467,9 +1387,6 @@ h6 {
   border: 1px solid #3F69AA;
 }
 
-
-
-
 .checkout {
   position: relative;
   padding: 60px 0;
@@ -1567,9 +1484,6 @@ h6 {
   border: none;
 }
 
-
-
-
 .my-account {
   position: relative;
   padding: 60px 0;
@@ -1634,8 +1548,6 @@ h6 {
   margin-bottom: 15px;
 }
 
-
-
 .brand {
   position: relative;
   padding: 0 0 60px 0;
@@ -1651,7 +1563,6 @@ h6 {
   
   
 }
-
 
 .contact {
   position: relative;
@@ -1715,9 +1626,6 @@ h6 {
 .contact .social a:hover i {
   color: #ffffff;
 }
-
-
-
 
 /* Slider Arrow Styles */
 .slick-prev,
@@ -1808,7 +1716,7 @@ h6 {
 
   .slick-prev::before,
   .slick-next::before {
-    font-size: 24px; /* Adjust arrow size */
+    font-size: 24px; 
   }
 }
 
@@ -1824,8 +1732,6 @@ h6 {
     font-size: 20px; /* Adjust arrow size */
   }
 }
-
-
 
 /**********************************/
 /********** Footer CSS ************/
