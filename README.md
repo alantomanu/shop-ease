@@ -2,7 +2,7 @@
 # 🛒 ShopEase – Full-Stack eCommerce Platform
 
 Welcome to **ShopEase**, a feature-rich eCommerce platform built with Node.js, MongoDB, and Razorpay. This full-stack application supports both user-facing shopping functionality and a powerful admin dashboard.
-### 🌐 **Live Site**  **🔗 [shop-ease.onrender.com](https://shop-ease-l798.onrender.com)** 
+### 🌐 **Live Site**  **🔗 [shop-ease.koyeb.com](https://shop-ease.koyeb.app)** 
 ---
 
 
@@ -10,8 +10,8 @@ Welcome to **ShopEase**, a feature-rich eCommerce platform built with Node.js, M
 ## 📦 **Deployment Pipeline**
 
 <p align="center">
-  <a href="https://render.com">
-    <img src="https://img.shields.io/badge/🚀_Hosted_on-Render-46E3B7?style=for-the-badge&logo=render&logoColor=white" alt="Render Badge" />
+  <a href="https://koyeb.com">
+    <img src="https://img.shields.io/badge/🚀_Hosted_on-Koyeb-24292e?style=for-the-badge&logo=koyeb&logoColor=white" alt="Koyeb Badge" />
   </a>
   <a href="https://www.docker.com/">
     <img src="https://img.shields.io/badge/Containerized-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker Badge" />
@@ -166,7 +166,7 @@ Welcome to **ShopEase**, a feature-rich eCommerce platform built with Node.js, M
 Every push to the main branch:
 - Builds Docker image
 - Publishes it to Docker Hub
-- Triggers deployment to Render using GitHub Actions
+- Triggers deployment to koyeb using GitHub Actions
 
 ---
 

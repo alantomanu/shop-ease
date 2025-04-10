@@ -29,7 +29,7 @@ jobs:
         uses: koyeb/action-git-deploy@v1
         with:
           app-name: shop-ease
-          service-name: shop-ease
+          service-name: shopease
           docker: alantomanu/shopease:latest
           service-instance-type: free
           service-regions: fra
