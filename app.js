@@ -97,6 +97,10 @@ db.connect((err) => {
     app.use('/', userRouter);
     app.use('/admin', adminRouter);
 
+    app.get('/ping', (req, res) => {
+      res.status(200).send('pong');
+    });
+
     app.use((req, res, next) => {
       next(createError(404));
     });
